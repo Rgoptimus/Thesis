@@ -1,7 +1,7 @@
 import streamlit as st
 
 def calculate_sgpa(grades):
-    credit_points = {"A": 4, "AB": 3.5, "B": 3, "BC": 2.5, "C": 2, "D": 1}
+    credit_points = {"B": 4, "C": 3.5, "D": 3, "E": 2.5, "F": 2, "G": 1}
 
     total_credit = 0
     total_marks = 0
@@ -18,7 +18,7 @@ def main():
     st.title("SGPA Calculator")
 
     # Input for grades
-    grades = st.text_input("Enter grades separated by spaces (e.g., A B AB):").split()
+    grades = st.text_input("Enter grades separated by spaces (e.g., B C D):").split()
 
     if grades:
         # Calculate SGPA
