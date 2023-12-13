@@ -271,13 +271,14 @@ def main():
                        'Medical_leave_ease', 'Health_disclosure', 'Emotions']
         
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
+        st.dataframe(encoded_data)
         
         # Assuming df is your DataFrame
-        columns_to_encode = ['Age', 'Employees_count']
+        # columns_to_encode = ['Age', 'Employees_count']
         
-        encoded_data = encode_columns(encoded_data, columns_to_encode)
+        # encoded_data = encode_columns(encoded_data, columns_to_encode)
 
-        st.dataframe(encoded_data)
+        # st.dataframe(encoded_data)
 
         top_feature_list =['Past_disorder_No',
                              'Past_disorder_Yes',
