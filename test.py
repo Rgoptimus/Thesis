@@ -93,9 +93,20 @@ def main():
 
     st.markdown("""---""")
     
-    # Get the absolute path to the file
-    file_path = os.path.abspath("Thesis/mlp_model.pkl")
-    model = load_model(file_path)
+    # Allow the user to upload the pickle file
+    uploaded_file = st.file_uploader("Upload pickle file", type=["pkl"])
+
+    if uploaded_file is not None:
+        # Save the uploaded file to a local path
+        file_path = "uploaded_file.pkl"
+        with open(file_path, 'wb') as file:
+            file.write(uploaded_file.read())
+
+        # Load the model
+        model = load_model(file_path)
+
+        # Delete the temporary file
+        os.remove(file_path)
 
     # Create dataframe
     df = [['Age',
