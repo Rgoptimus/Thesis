@@ -303,7 +303,7 @@ def main():
         # Reorder columns to match top_feature_list order
         encoded_data = encoded_data[top_feature_list]
         
-        prediction = model.predict(prediction_df)
+        prediction = model.predict(encoded_data)
 
         st.write(prediction)
 
