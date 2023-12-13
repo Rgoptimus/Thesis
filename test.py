@@ -85,7 +85,6 @@ def main():
 
     st.markdown("""---""")
 
-
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
     st.write(f"Jenis Kelamin: {Gender}")
