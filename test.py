@@ -71,6 +71,8 @@ def main():
     Emotions_options = ["1-100","100-1000","Lebih dari 1000"]
     Emotions = st.selectbox("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?", Emotions_options)
 
+    st.markdown("""---""")
+
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
