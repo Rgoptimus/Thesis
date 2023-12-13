@@ -5,6 +5,8 @@ import os
 import numpy as np
 import subprocess
 
+pip install scikit-learn
+
 # Install scikit-learn if not already installed
 try:
     import sklearn
