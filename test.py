@@ -274,32 +274,34 @@ def main():
         
         # List of columns to encode
         columns_to_encode = ['Age', 'Employees_count']
-
+        
         # Initialize the OrdinalEncoder
         encoder = OrdinalEncoder()
-
+        
         # Fit and transform the selected columns
         encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
-
+        
+        # List of top features
         top_feature_list = ['Past_disorder_No',
-                             'Past_disorder_Yes',
-                             'Family_history_No',
-                             'Mental_health_treatment',
-                             'Family_history_Yes',
-                             'Share_mental_illness_Not applicable to me (I do not have a mental illness)',
-                             "Past_disorder_I don't know",
-                             'Employees_count',
-                             'Tech_industry_support',
-                             'Age',
-                             'Share_mental_illness_Very open',
-                             'Gender_Male']
+                            'Past_disorder_Yes',
+                            'Family_history_No',
+                            'Mental_health_treatment',
+                            'Family_history_Yes',
+                            'Share_mental_illness_Not applicable to me (I do not have a mental illness)',
+                            "Past_disorder_I don't know",
+                            'Employees_count',
+                            'Tech_industry_support',
+                            'Age',
+                            'Share_mental_illness_Very open',
+                            'Gender_Male']
         
         # Set all other dummy columns to 0
-        for column in encoded_data.columns:
-            if column not in top_feature_list:
+        for column in top_feature_list:
+            if column not in encoded_data.columns:
                 encoded_data[column] = 0
         
-        prediction_df = encoded_data[top_feature_list]
+        # Reorder columns to match top_feature_list order
+        encoded_data = encoded_data[top_feature_list]
         
         prediction = model.predict(prediction_df)
 
