@@ -1,3 +1,12 @@
+import subprocess
+import streamlit as st
+
+# Install the dependencies using pip
+st.text("Installing dependencies...")
+subprocess.run(["pip", "install", "-r", "requirements.txt"])
+
+st.success("Dependencies installed successfully!")
+
 import streamlit as st
 import pickle
 import pandas as pd
