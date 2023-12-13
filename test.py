@@ -1,7 +1,7 @@
 import streamlit as st
 
 def main():
-    st.title("Formulir Data Pengguna")
+    st.title("Prediksi Kesehatan Mental Karyawan")
 
     # Pertanyaan Usia
     usia = st.slider("Berapa usia Anda?", min_value=0, max_value=100, value=25)
@@ -9,6 +9,17 @@ def main():
     # Pertanyaan Jenis Kelamin
     jenis_kelamin_options = ["Laki-laki", "Perempuan"]
     jenis_kelamin = st.selectbox("Jenis kelamin Anda apa?", jenis_kelamin_options)
+
+    # Pertanyaan Masalah Kesehatan Sebelumnya
+    masalah_kesehatan_sebelumnya1_options = ["Iya","Tidak","Tidak tahu"]
+    masalah_kesehatan1 = st.selectbox("Pernahkah Anda mengalami gangguan kesehatan mental sebelumnya?", masalah_kesehatan_sebelumnya1_options)
+
+    masalah_kesehatan_sebelumnya2_options = ["Iya","Tidak","Tidak tahu"]
+    masalah_kesehatan2 = st.selectbox("Apakah ada riwayat gangguan kesehatan mental dalam keluarga Anda?", masalah_kesehatan_sebelumnya1_options)
+
+    masalah_kesehatan_sebelumnya3_options = ["Iya","Tidak"]
+    masalah_kesehatan3 = st.selectbox("Pernahkah Anda mencari perawatan dari profesional kesehatan mental untuk gangguan kesehatan mental?", masalah_kesehatan_sebelumnya1_options)
+
 
     # Menampilkan hasil
     st.write(f"Usia: {usia} tahun")
