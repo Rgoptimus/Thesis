@@ -244,6 +244,45 @@ def main():
             '100 - 1000' : '100-1000',
             'Lebih dari 1000' : 'More than 1000'
         })
+        
+        df_x['Age'] = df_x['Age'].apply(categorize_age)
+        
+        df_x['Employer_physical_health_importance1'] = df_x['Employer_physical_health_importance1'].astype('float')
+        df_x['Employer_mental_health_importance2'] = df_x['Employer_mental_health_importance2'].astype('float')
+        df_x['Tech_industry_support'] = df_x['Tech_industry_support'].astype('float')
+        df_x['Employer_mental_health_discussion'] = df_x['Employer_mental_health_discussion'].astype('float')
+        df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].astype('int')
+        df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].astype('float')
+        
+        list_columns = ['Gender', 'Past_disorder', 'Family_history',
+                       'Mental_health_discussion', 'Health_benefits', 'Previous_benefits',
+                       'Mental_health_options', 'Share_mental_illness', 'Supervisor_comfort',
+                       'Coworker_mental_health_discussion1',
+                       'Medical_leave_ease', 'Health_disclosure', 'Emotions']
+        
+        encoded_data = pd.get_dummies(df_x, columns=list_columns)
+        
+        encoder = OrdinalEncoder(cols=['Age','Employees_count'])
+        
+        data_encoding = encoder.fit_transform(encoded_data)
+        top_feature_list =['Past_disorder_No',
+                             'Past_disorder_Yes',
+                             'Family_history_No',
+                             'Mental_health_treatment',
+                             'Family_history_Yes',
+                             'Share_mental_illness_Not applicable to me (I do not have a mental illness)',
+                             "Past_disorder_I don't know",
+                             'Employees_count',
+                             'Tech_industry_support',
+                             'Age',
+                             'Share_mental_illness_Very open',
+                             'Gender_Male']
+        
+        prediction_df = data_encoding[top_feature_list]
+        
+        prediction = mlp.predict(prediction_df)
+
+    st.write(f"Hasil Prediksi: {prediction}")
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
