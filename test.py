@@ -1,4 +1,11 @@
 import streamlit as st
+import pickle
+
+# Load pickle file
+def load_model(file_path):
+    with open(file_path, 'rb') as model_file:
+        model = pickle.load(model_file)
+    return model
 
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
