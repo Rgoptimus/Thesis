@@ -280,6 +280,19 @@ def main():
 
         # Fit and transform the selected columns
         encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
+
+        top_feature_list = ['Past_disorder_No',
+                             'Past_disorder_Yes',
+                             'Family_history_No',
+                             'Mental_health_treatment',
+                             'Family_history_Yes',
+                             'Share_mental_illness_Not applicable to me (I do not have a mental illness)',
+                             "Past_disorder_I don't know",
+                             'Employees_count',
+                             'Tech_industry_support',
+                             'Age',
+                             'Share_mental_illness_Very open',
+                             'Gender_Male']
         
         prediction_df = encoded_data[top_feature_list]
         
