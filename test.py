@@ -272,11 +272,16 @@ def main():
         
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
         
-        encoder = OrdinalEncoder(columns=['Age','Employees_count'])
+        # List of columns to encode
+        columns_to_encode = ['Age', 'Employees_count']
+
+        # Initialize the OrdinalEncoder
+        encoder = OrdinalEncoder()
+
+        # Fit and transform the selected columns
+        encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
         
-        data_encoding = encoder.fit_transform(encoded_data)
-        
-        prediction_df = data_encoding[top_feature_list]
+        prediction_df = encoded_data[top_feature_list]
         
         prediction = model.predict(prediction_df)
 
