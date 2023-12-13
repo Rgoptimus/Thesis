@@ -15,7 +15,14 @@ import numpy as np
 import subprocess
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import OrdinalEncoder
+import requests
 
+API_URL = "https://api-inference.huggingface.co/models/StevenLimcorn/indonesian-roberta-base-emotion-classifier"
+headers = {"Authorization": f"Bearer {API_TOKEN}"}
+
+def query(payload):
+	response = requests.post(API_URL, headers=headers, json=payload)
+	return response.json()
 
 # Memanggil pikle file
 def load_model(file_path):
@@ -309,7 +316,8 @@ def main():
 
         
 
-        emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
+        output = query({
+	    "inputs": "I like you. I love you",})
         
         st.dataframe(encoded_data)
         st.write(prediction)
