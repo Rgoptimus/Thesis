@@ -145,6 +145,9 @@ def main():
 
     st.dataframe(df)
 
+    # Add a "Predict" button
+    predict_button = st.button("Predict")
+
     st.markdown("""---""")
 
     # Menampilkan hasil
