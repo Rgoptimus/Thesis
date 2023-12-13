@@ -8,3 +8,4 @@ pandas>=1.0.5
 patsy>=0.5.1
 unittest2
 importlib_resources ; python_version<"3.9"
+transformers
