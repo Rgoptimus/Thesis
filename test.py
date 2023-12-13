@@ -156,7 +156,7 @@ def main():
                                     'Employer_mental_health_discussion','Employees_count','Mendical_leave_ease',
                                     'Health_disclosure','Emotions'])
 
-    st.dataframe(df)
+    st.dataframe(df_x)
 
     # Menambah tombol "Predict"
     predict_button = st.button("Predict")
