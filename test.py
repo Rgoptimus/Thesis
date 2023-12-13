@@ -265,7 +265,7 @@ def main():
         df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].astype('int')
         df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].astype('float')
         
-        df_x['Age'] = df_x[''].replace({
+        df_x['Age'] = df_x['Age'].replace({
             '11-26' : 0,
             '27-42' : 1,
             '43-58' : 2,
@@ -303,15 +303,6 @@ def main():
         
         # Reorder columns to match top_feature_list order
         encoded_data = encoded_data[top_feature_list]
-
-        # List of columns to encode
-        columns_to_encode = ['Age', 'Employees_count']
-        
-        # Initialize the OrdinalEncoder
-        encoder = OrdinalEncoder()
-        
-        # Fit and transform the selected columns
-        encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
         
         prediction = model.predict(encoded_data)
         
