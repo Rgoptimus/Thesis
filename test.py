@@ -6,27 +6,53 @@ def main():
     st.subheader("Usia dan Identitas")
 
     # Pertanyaan Usia
-    usia = st.slider("Berapa usia Anda?", min_value=0, max_value=100, value=25)
+    Age = st.slider("Berapa usia Anda?", min_value=0, max_value=100, value=25)
 
     # Pertanyaan Jenis Kelamin
-    jenis_kelamin_options = ["Laki-laki", "Perempuan"]
-    jenis_kelamin = st.selectbox("Jenis kelamin Anda apa?", jenis_kelamin_options)
+    Gender_options = ["Laki-laki", "Perempuan"]
+    Gender = st.selectbox("Jenis kelamin Anda apa?", Gender_options)
 
     st.subheader("Permasalahan Kesehatan Mental Sebelumnya")
     # Pertanyaan Masalah Kesehatan Sebelumnya
-    masalah_kesehatan_sebelumnya1_options = ["Iya","Tidak","Tidak tahu"]
-    masalah_kesehatan1 = st.selectbox("Pernahkah Anda mengalami gangguan kesehatan mental sebelumnya?", masalah_kesehatan_sebelumnya1_options)
+    Past_disorder_options = ["Iya","Tidak","Tidak tahu"]
+    Past_disorder = st.selectbox("Pernahkah Anda mengalami gangguan kesehatan mental sebelumnya?", Past_disorder_options)
 
-    masalah_kesehatan_sebelumnya2_options = ["Iya","Tidak","Tidak tahu"]
-    masalah_kesehatan2 = st.selectbox("Apakah ada riwayat gangguan kesehatan mental dalam keluarga Anda?", masalah_kesehatan_sebelumnya2_options)
+    Family_history_options = ["Iya", "Tidak", "Tidak tahu"]
+    Family_history = st.selectbox("Apakah ada riwayat gangguan kesehatan mental dalam keluarga Anda?", Family_history_options)
 
-    masalah_kesehatan_sebelumnya3_options = ["Iya","Tidak"]
-    masalah_kesehatan3 = st.selectbox("Pernahkah Anda mencari perawatan dari profesional kesehatan mental untuk gangguan kesehatan mental?", masalah_kesehatan_sebelumnya3_options)
+    Mental_health_treatment_options = ["Iya", "Tidak"]
+    Mental_health_treatment = st.selectbox("Pernahkah Anda mencari perawatan dari profesional kesehatan mental untuk gangguan kesehatan mental?", Mental_health_treatment_options)
 
     st.subheader("Pentingnya Kesehatan Mental di Tempat Kerja")
+    # Pertanyaan Pentingnya Kesehatan Mental di Tempat Kerja
+    Employer_mental_health_importance2 = st.slider("Seberapa penting menurut Anda perusahaan Anda menghargai kesehatan mental?", min_value=0, max_value=10, value=1)
+    Tech_industry_support = st.slider("Bagaimana menurut Anda dukungan yang diberikan perusahaan Anda kepada karyawan yang memiliki permasalahan kesehatan mental?", min_value=0, max_value=5, value=1)
+    Employer_physical_health_importance1 = st.slider("Seberapa penting menurut Anda perusahaan Anda dalam menghargai kesehatan fisik?", min_value=0, max_value=10, value=1)
+    
     st.subheader("Manfaat Kesehatan Mental di Tempat Kerja")
-    st.subheader("Kenyamanaan Berbicara tentang Kesehatan Mental")
+    # Pertanyaan Manfaat Kesehatan Mental di Tempat Kerja
+    Health_benefits_options = ["Iya","Tidak","Tidak tahu"]
+    Health_benefits = st.selectbox("Apakah perusahaan Anda menyediakan manfaat kesehatan mental sebagai bagian dari cakupan perawatan kesehatan mental?", Health_benefits_options)
+    
+    Previous_benefits_options = ["Iya","Tidak","Tidak tahu"]
+    Previous_benefits = st.selectbox("Apakah perusahaan – perusahaan sebelumnya Anda menyediakan manfaat kesehatan mental?", Previous_benefits_options)
+
+    Mental_health_options_options = ["Iya","Tidak","Tidak tahu"]
+    Mental_health_options = st.selectbox("Apakah Anda mengetahui opsi perawatan kesehatan mental yang disediakan oleh perusahaan – perusahaan sebelumnya tempat Anda bekerja?", Mental_health_options_options)
+    
+    st.subheader("Kenyamanan Berbicara tentang Kesehatan Mental")
+    # Pertanyaan Kenyamanan Berbicara tertang Kesehatan Mental
+    Share_mental_illness_options = ["Tidak berlaku untuk saya","Tidak terbuka sama sekali","Netral","]
+    Share_mental_illness = st.selectbox("Seberapa bersedia Anda untuk berbicara kepada teman dan keluarga bahwa Anda memiliki masalah kesehatan mental?", Mental_health_options_options)
+
+    Mental_health_options_options = ["Iya","Tidak","Tidak tahu"]
+    Mental_health_options = st.selectbox("Apakah Anda mengetahui opsi perawatan kesehatan mental yang disediakan oleh perusahaan – perusahaan sebelumnya tempat Anda bekerja?", Mental_health_options_options)
+
+    Mental_health_options_options = ["Iya","Tidak","Tidak tahu"]
+    Mental_health_options = st.selectbox("Apakah Anda mengetahui opsi perawatan kesehatan mental yang disediakan oleh perusahaan – perusahaan sebelumnya tempat Anda bekerja?", Mental_health_options_options)
+    
     st.subheader("Faktor – Faktor Tambahan")
+    # Pertanyaan Faktor - Faktor Tambahan
 
 
     # Menampilkan hasil
