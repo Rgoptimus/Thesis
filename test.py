@@ -41,6 +41,15 @@ def categorize_age(age):
     else:
         return 'Tidak diketahui'
 
+def encode_columns(df, columns_to_encode):
+    encoder = OrdinalEncoder()
+    df[columns_to_encode] = encoder.fit_transform(df[columns_to_encode])
+
+    # Map the encoded values to 1 and 0
+    df[columns_to_encode] = df[columns_to_encode].astype(int)
+
+    return df
+
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
 
@@ -266,11 +275,7 @@ def main():
         # Assuming df is your DataFrame
         columns_to_encode = ['Age', 'Employees_count']
         
-        # Initialize the encoder
-        encoder = OrdinalEncoder()
-        
-        # Fit and transform the specified columns
-        encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
+        encoded_data = encode_columns(df, columns_to_encode)
 
         st.dataframe(encoded_data)
 
