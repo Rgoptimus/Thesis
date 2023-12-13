@@ -15,7 +15,7 @@ import numpy as np
 import subprocess
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import OrdinalEncoder
-from transformers import pipeline
+
 
 # Memanggil pikle file
 def load_model(file_path):
