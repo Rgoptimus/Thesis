@@ -14,6 +14,7 @@ import os
 import numpy as np
 import subprocess
 from sklearn.neural_network import MLPClassifier
+from category_encoders.ordinal import OrdinalEncoder
 
 # Memanggil pikle file
 def load_model(file_path):
