@@ -244,11 +244,6 @@ def main():
             '100 - 1000' : '100-1000',
             'Lebih dari 1000' : 'More than 1000'
         })
-        
-        df_x['Mental_health_discussion'] = df_x['Mental_health_discussion'].replace({
-            'Iya' : 'Yes',
-            'Tidak' : 'No'
-        })
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
