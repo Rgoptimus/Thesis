@@ -14,6 +14,7 @@ import os
 import numpy as np
 import subprocess
 from sklearn.neural_network import MLPClassifier
+from sklearn.preprocessing import OrdinalEncoder
 
 # Memanggil pikle file
 def load_model(file_path):
@@ -282,7 +283,7 @@ def main():
         
         prediction = model.predict(prediction_df)
 
-    st.write(prediction)
+        st.write(prediction)
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
