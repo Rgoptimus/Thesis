@@ -90,6 +90,9 @@ def main():
     Emotions_options = ["1-100","100-1000","Lebih dari 1000"]
     Emotions = st.selectbox("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?", Emotions_options)
 
+    # Load the machine learning model from the pickle file
+    model = load_model("mlp_model.pkl")
+
     st.markdown("""---""")
 
     # Menampilkan hasil
