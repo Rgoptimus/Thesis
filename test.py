@@ -42,14 +42,20 @@ def main():
     
     st.subheader("Kenyamanan Berbicara tentang Kesehatan Mental")
     # Pertanyaan Kenyamanan Berbicara tertang Kesehatan Mental
-    Share_mental_illness_options = ["Tidak berlaku untuk saya","Tidak terbuka sama sekali","Netral","]
-    Share_mental_illness = st.selectbox("Seberapa bersedia Anda untuk berbicara kepada teman dan keluarga bahwa Anda memiliki masalah kesehatan mental?", Mental_health_options_options)
+    Share_mental_illness_options = ["Tidak berlaku untuk saya","Tidak terbuka sama sekali","Netral","Agak tidak terbuka","Agak terbuka","Sangat terbuka"]
+    Share_mental_illness = st.selectbox("Seberapa bersedia Anda untuk berbicara kepada teman dan keluarga bahwa Anda memiliki masalah kesehatan mental?", Share_mental_illness_options)
 
-    Mental_health_options_options = ["Iya","Tidak","Tidak tahu"]
-    Mental_health_options = st.selectbox("Apakah Anda mengetahui opsi perawatan kesehatan mental yang disediakan oleh perusahaan – perusahaan sebelumnya tempat Anda bekerja?", Mental_health_options_options)
+    Supervisor_comfort_options = ["Iya","Tidak","Mungkin"]
+    Supervisor_comfort = st.selectbox("Apakah Anda merasa nyaman untuk berbicara tentang masalah kesehatan mental dengan atasan langsung Anda?", Supervisor_comfort_options)
 
-    Mental_health_options_options = ["Iya","Tidak","Tidak tahu"]
-    Mental_health_options = st.selectbox("Apakah Anda mengetahui opsi perawatan kesehatan mental yang disediakan oleh perusahaan – perusahaan sebelumnya tempat Anda bekerja?", Mental_health_options_options)
+    Coworker_mental_health_discussion1_options = ["Iya","Tidak","Mungkin"]
+    Coworker_mental_health_discussion1 = st.selectbox("Apakah Anda merasa nyaman untuk berbicara tentang masalah kesehatan mental dengan rekan kerja Anda?", Coworker_mental_health_discussion1_options)
+
+    Coworker_mental_health_discussion2_options = ["Iya","Tidak"]
+    Coworker_mental_health_discussion2 = st.selectbox("Pernahkah Anda membicarakan masalah kesehatan mental dengan rekan kerja Anda?", Coworker_mental_health_discussion2_options)
+
+    Employer_mental_health_discussion_options = ["Iya","Tidak"]
+    Employer_mental_health_discussion = st.selectbox("Pernahkah Anda membicarakan masalah kesehatan mental dengan atasan Anda?", Employer_mental_health_discussion_options)
     
     st.subheader("Faktor – Faktor Tambahan")
     # Pertanyaan Faktor - Faktor Tambahan
