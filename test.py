@@ -1,5 +1,6 @@
 import streamlit as st
 import pickle
+import pandas as pd
 
 # Load pickle file
 def load_model(file_path):
@@ -90,10 +91,15 @@ def main():
     Emotions_options = ["1-100","100-1000","Lebih dari 1000"]
     Emotions = st.selectbox("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?", Emotions_options)
 
-    # Load the machine learning model from the pickle file
+    st.markdown("""---""")
+
+        # Load the machine learning model from the pickle file
     model = load_model("mlp_model.pkl")
 
-    st.markdown("""---""")
+    # Create dataframe
+    df = [['Age',
+          'Gender'
+          ]]
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
