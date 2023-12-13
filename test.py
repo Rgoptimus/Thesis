@@ -263,9 +263,12 @@ def main():
         
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
         
-        encoder = OrdinalEncoder(cols=['Age','Employees_count'])
+        # Assuming df is your DataFrame
+        encoder = OrdinalEncoder(cols=['Age', 'Employees_count'])
+        df_encoded = encoder.fit_transform(encoded_data)
         
-        data_encoding = encoder.fit_transform(encoded_data)
+        data_encoding = encoder.fit_transform(df_encoded)
+
         top_feature_list =['Past_disorder_No',
                              'Past_disorder_Yes',
                              'Family_history_No',
