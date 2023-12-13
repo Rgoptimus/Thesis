@@ -6,7 +6,6 @@ import numpy as np
 import subprocess
 
 # Modul Statistik
-from scipy import stats
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.model_selection import train_test_split
