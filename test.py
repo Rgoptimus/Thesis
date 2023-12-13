@@ -3,12 +3,16 @@ import streamlit as st
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
 
+    st.subheader("Usia dan Identitas")
+
     # Pertanyaan Usia
     usia = st.slider("Berapa usia Anda?", min_value=0, max_value=100, value=25)
 
     # Pertanyaan Jenis Kelamin
     jenis_kelamin_options = ["Laki-laki", "Perempuan"]
     jenis_kelamin = st.selectbox("Jenis kelamin Anda apa?", jenis_kelamin_options)
+
+    st.subheader("Permasalahan Kesehatan Mental Sebelumnya")
 
     # Pertanyaan Masalah Kesehatan Sebelumnya
     masalah_kesehatan_sebelumnya1_options = ["Iya","Tidak","Tidak tahu"]
