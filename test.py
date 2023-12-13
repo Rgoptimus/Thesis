@@ -264,27 +264,19 @@ def main():
         df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].astype('int')
         df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].astype('float')
         
-        # List of categorical columns to one-hot encode
-        list_columns = ['Past_disorder', 'Family_history', 'Mental_health_treatment', 'Share_mental_illness', 'Gender', 'Employees_count']
+        list_columns = ['Gender', 'Past_disorder', 'Family_history',
+                       'Mental_health_discussion', 'Health_benefits', 'Previous_benefits',
+                       'Mental_health_options', 'Share_mental_illness', 'Supervisor_comfort',
+                       'Coworker_mental_health_discussion1',
+                       'Medical_leave_ease', 'Health_disclosure', 'Emotions']
         
-        # One-hot encode categorical columns
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
         
-        # Create a DataFrame with the desired columns
-        top_feature_list = ['Past_disorder_No', 'Past_disorder_Yes', 'Family_history_No', 'Mental_health_treatment', 
-                            'Family_history_Yes', 'Share_mental_illness_Not applicable to me (I do not have a mental illness)',
-                            "Past_disorder_I don't know", 'Employees_count', 'Tech_industry_support', 'Age',
-                            'Share_mental_illness_Very open', 'Gender_Male']
+        encoder = OrdinalEncoder(cols=['Age','Employees_count'])
         
-        # Set all other dummy columns to 0
-        for column in encoded_data.columns:
-            if column not in top_feature_list:
-                encoded_data[column] = 0
+        data_encoding = encoder.fit_transform(encoded_data)
         
-        # Display the encoded DataFrame
-        st.dataframe(encoded_data)
-        
-        prediction_df = encoded_data[top_feature_list]
+        prediction_df = data_encoding[top_feature_list]
         
         prediction = model.predict(prediction_df)
 
