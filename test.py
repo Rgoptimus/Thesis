@@ -112,7 +112,7 @@ def main():
     st.markdown("""---""")
 
     # Create dataframe
-    df = [['Age',
+    df = pd.DataFrame[['Age',
           'Gender',
            'Past_disorder',
            'Family_history',
