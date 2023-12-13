@@ -274,15 +274,6 @@ def main():
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
         encoded_data.replace(True, 1, inplace=True)
         
-        # List of columns to encode
-        columns_to_encode = ['Age', 'Employees_count']
-        
-        # Initialize the OrdinalEncoder
-        encoder = OrdinalEncoder()
-        
-        # Fit and transform the selected columns
-        encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
-        
         # List of top features
         top_feature_list = ['Past_disorder_No',
                             'Past_disorder_Yes',
