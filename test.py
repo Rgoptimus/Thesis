@@ -176,18 +176,18 @@ def main():
     # Check if the button is clicked
     if predict_button:
         df_x['Gender'] = df_x['Gender'].replace({
-                        'Laki - laki':'Male',
+                        'Laki-laki':'Male',
                         'Perempuan' : 'Female'})
 
         df_x['Past_disorder'] = df_x['Past_disorder'].replace({
                                 'Iya' : 'Yes',
                                 'Tidak' : 'No',
-                                'Tidak Tahu' : "I don't know"})
+                                'Tidak tahu' : "I don't know"})
 
         df_x['Family_history'] = df_x['Past_disorder'].replace({
                                 'Iya' : 'Yes',
                                 'Tidak' : 'No',
-                                'Tidak Tahu' : "I don't know"})
+                                'Tidak tahu' : "I don't know"})
 
         df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].replace({
                                         'Iya' : '1',
