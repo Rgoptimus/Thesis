@@ -294,6 +294,11 @@ def main():
                              'Share_mental_illness_Very open',
                              'Gender_Male']
         
+        # Set all other dummy columns to 0
+        for column in encoded_data.columns:
+            if column not in top_feature_list:
+                encoded_data[column] = 0
+        
         prediction_df = encoded_data[top_feature_list]
         
         prediction = model.predict(prediction_df)
