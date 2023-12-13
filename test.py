@@ -58,7 +58,7 @@ def main():
     st.subheader("Usia dan Identitas")
 
     # Pertanyaan Usia
-    Age = st.slider("Berapa usia Anda?", min_value=0, max_value=100, value=25)
+    Age = st.slider("Berapa usia Anda?", min_value=11, max_value=68, value=25)
 
     # Pertanyaan Jenis Kelamin
     Gender_options = ["Laki-laki", "Perempuan"]
@@ -250,12 +250,14 @@ def main():
         })
         
         df_x['Employees_count'] = df_x['Employees_count'].replace({
-            '1-100' : '1-100',
-            '100-1000' : '100-1000',
-            'Lebih dari 1000' : 'More than 1000'
+            '1-100' : 0,
+            '100-1000' : 1,
+            'Lebih dari 1000' : 2
         })
         
         df_x['Age'] = df_x['Age'].astype('int')
+        df_x['Age'] = df_x['Age'].apply(categorize_age)
+        
         df_x['Employer_physical_health_importance1'] = df_x['Employer_physical_health_importance1'].astype('float')
         df_x['Employer_mental_health_importance2'] = df_x['Employer_mental_health_importance2'].astype('float')
         df_x['Tech_industry_support'] = df_x['Tech_industry_support'].astype('float')
@@ -263,7 +265,12 @@ def main():
         df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].astype('int')
         df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].astype('float')
         
-        df_x['Age'] = df_x['Age'].apply(categorize_age)
+        df_x['Age'] = df_x[''].replace({
+            '11-26' : 0,
+            '27-42' : 1,
+            '43-58' : 2,
+            '59-68' : 3
+        })
         
         list_columns = ['Gender', 'Past_disorder', 'Family_history',
                        'Health_benefits', 'Previous_benefits',
