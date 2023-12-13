@@ -3,7 +3,7 @@ import streamlit as st
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
 
-    st.markdown("""**---**""")
+    st.markdown("""---""")
     
     st.subheader("Usia dan Identitas")
 
