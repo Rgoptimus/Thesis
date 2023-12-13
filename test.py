@@ -1,7 +1,7 @@
 import subprocess
 import streamlit as st
 
-# Install the dependencies using pip
+# Install The dependencies
 st.text("Installing dependencies...")
 subprocess.run(["pip", "install", "-r", "requirements.txt"])
 
@@ -15,19 +15,19 @@ import numpy as np
 import subprocess
 from sklearn.neural_network import MLPClassifier
 
-# Function to load the pickle model
+# Memanggil pikle file
 def load_model(file_path):
     with open(file_path, 'rb') as model_file:
         model = pickle.load(model_file)
     return model
 
-# Get the absolute path to the file
+# Memanggil lokasi pikle file
 file_path = os.path.abspath("mlp_model.pkl")
 
-# Load the machine learning model from the pickle file
+# Memanggil model machine learning untuk prediksi
 model = load_model(file_path)
 
-# Categorize_age Function
+# Mengkategorikan umur
 def categorize_age(age):
     if 11 <= age <= 26:
         return '11-26'
@@ -124,7 +124,7 @@ def main():
 
     st.markdown("""---""")
 
-    # Create dataframe
+    # Membuat dataframe
     data = [[Age,
           Gender,
            Past_disorder,
@@ -158,10 +158,97 @@ def main():
 
     st.dataframe(df)
 
-    # Add a "Predict" button
+    # Menambah tombol "Predict"
     predict_button = st.button("Predict")
 
     st.markdown("""---""")
+
+    # Check if the button is clicked
+    if predict_button:
+        df_x['Gender'] = df_x['Gender'].replace({
+                        'Laki - laki':'Male',
+                        'Perempuan' : 'Female'})
+
+        df_x['Past_disorder'] = df_x['Past_disorder'].replace({
+                                'Iya' : 'Yes',
+                                'Tidak' : 'No',
+                                'Tidak Tahu' : "I don't know"})
+
+        df_x['Family_history'] = df_x['Past_disorder'].replace({
+                                'Iya' : 'Yes',
+                                'Tidak' : 'No',
+                                'Tidak Tahu' : "I don't know"})
+
+        df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].replace({
+                                        'Iya' : '1',
+                                        'Tidak' : '0'})
+
+        df_x['Health_benefits'] = df_x['Health_benefits'].replace({
+                                    'Iya' : 'Yes',
+                                    'Tidak' : 'No',
+                                    'Tidak tahu' : "I don't know"})
+
+        df_x['Previous_benefits'] = df_x['Previous_benefits'].replace({
+                                    'Iya' : 'Yes',
+                                    'Tidak' : 'No',
+                                    'Tidak tahu' : "I don't know"})
+
+        df_x['Mental_health_options'] = df_x['Mental_health_options'].replace({
+                                        'Iya' : 'Yes',
+                                        'Tidak' : 'No',
+                                        'Tidak tahu' : "I don't know"})
+
+        df_x['Share_mental_illness'] = df_x['Share_mental_illness'].replace({
+                                        'Tidak berlaku untuk saya' : 'Not applicable to me (I do not have a mental illness)',
+                                        'Tidak terbuka sama sekali' : 'Not open at all',
+                                        'Netral' : 'Neutral',
+                                        'Agak tidak terbuka' : 'Somewhat not open',
+                                        'Agak terbuka' : 'Somewhat open',
+                                        'Sangat terbuka' : 'Very open'})
+
+        df_x['Supervisor_comfort'] = df_x['Supervisor_comfort'].replace({
+                                    'Iya' : 'Yes',
+                                    'Tidak' : 'No',
+                                    'Mungkin' : 'Maybe'})
+
+        df_x['Coworker_mental_health_discussion1'] = df_x['Coworker_mental_health_discussion1'].replace({
+                                                    'Iya' : 'Yes',
+                                                    'Tidak' : 'No',
+                                                    'Mungkin' : 'Maybe'})
+
+        df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].replace({
+                                                    'Iya' : '1',
+                                                    'Tidak' : '0'})
+
+        df_x['Employer_mental_health_discussion'] = df_x['Employer_mental_health_discussion'].replace({
+                                                    'Iya' : '1',
+                                                    'Tidak' : '0'})
+
+
+        df_x['Medical_leave_ease'] = df_x['Medical_leave_ease'].replace({
+            'Sulit' : 'Difficult',
+            'Saya tidak tahu' : "I don't know",
+            'Agak sulit' : 'Somewhat difficult',
+            'Agak mudah' : 'Somewhat easy',
+            'Sangat mudah' : 'Very easy'
+        })
+        
+        df_x['Health_disclosure'] = df_x['Health_disclosure'].replace({
+            'Iya' : 'Yes',
+            'Tidak' : 'No',
+            'Mungkin' : 'Maybe'
+        })
+        
+        df_x['Employees_count'] = df_x['Employees_count'].replace({
+            '1 - 100' : '1-100',
+            '100 - 1000' : '100-1000',
+            'Lebih dari 1000' : 'More than 1000'
+        })
+        
+        df_x['Mental_health_discussion'] = df_x['Mental_health_discussion'].replace({
+            'Iya' : 'Yes',
+            'Tidak' : 'No'
+        })
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
