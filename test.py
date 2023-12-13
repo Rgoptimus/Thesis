@@ -15,10 +15,17 @@ import numpy as np
 import subprocess
 from sklearn.neural_network import MLPClassifier
 
+# Function to load the pickle model
 def load_model(file_path):
     with open(file_path, 'rb') as model_file:
         model = pickle.load(model_file)
     return model
+
+# Get the absolute path to the file
+file_path = os.path.abspath("Thesis/mlp_model.pkl")
+
+# Load the machine learning model from the pickle file
+model = load_model(file_path)
 
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
