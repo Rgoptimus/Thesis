@@ -255,14 +255,15 @@ def main():
             'Lebih dari 1000' : 'More than 1000'
         })
         
-        df_x['Age'] = df_x['Age'].apply(categorize_age)
-        
+        df_x['Age'] = df_x['Age'].astype('int')
         df_x['Employer_physical_health_importance1'] = df_x['Employer_physical_health_importance1'].astype('float')
         df_x['Employer_mental_health_importance2'] = df_x['Employer_mental_health_importance2'].astype('float')
         df_x['Tech_industry_support'] = df_x['Tech_industry_support'].astype('float')
         df_x['Employer_mental_health_discussion'] = df_x['Employer_mental_health_discussion'].astype('float')
         df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].astype('int')
         df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].astype('float')
+        
+        df_x['Age'] = df_x['Age'].apply(categorize_age)
         
         list_columns = ['Gender', 'Past_disorder', 'Family_history',
                        'Health_benefits', 'Previous_benefits',
