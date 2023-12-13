@@ -4,7 +4,7 @@ import pandas as pd
 
 # Load pickle file
 def load_model(file_path):
-    with open(Thesis, 'rb') as model_file:
+    with open(file_path, 'rb') as model_file:
         model = pickle.load(model_file)
     return model
 
@@ -94,7 +94,7 @@ def main():
     st.markdown("""---""")
 
         # Load the machine learning model from the pickle file
-    model = load_model("mlp_model.pkl")
+    model = load_model("Thesis/mlp_model.pkl")
 
     # Create dataframe
     df = [['Age',
