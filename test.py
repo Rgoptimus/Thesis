@@ -23,7 +23,7 @@ def load_model(file_path):
     return model
 
 # Memanggil lokasi pikle file
-file_path = os.path.abspath("mlp_model.pkl")
+file_path = os.path.abspath("mlp_model_fix.pkl")
 
 # Memanggil model machine learning untuk prediksi
 model = load_model(file_path)
