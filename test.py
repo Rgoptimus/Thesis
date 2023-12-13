@@ -271,6 +271,7 @@ def main():
                        'Medical_leave_ease', 'Health_disclosure', 'Emotions']
         
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
+        encoded_data.replace(True, 1, inplace=True)
         
         # List of columns to encode
         columns_to_encode = ['Age', 'Employees_count']
