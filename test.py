@@ -250,8 +250,8 @@ def main():
         })
         
         df_x['Employees_count'] = df_x['Employees_count'].replace({
-            '1 - 100' : '1-100',
-            '100 - 1000' : '100-1000',
+            '1-100' : '1-100',
+            '100-1000' : '100-1000',
             'Lebih dari 1000' : 'More than 1000'
         })
         
