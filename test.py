@@ -265,7 +265,7 @@ def main():
         df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].astype('float')
         
         list_columns = ['Gender', 'Past_disorder', 'Family_history',
-                       'Mental_health_discussion', 'Health_benefits', 'Previous_benefits',
+                       'Health_benefits', 'Previous_benefits',
                        'Mental_health_options', 'Share_mental_illness', 'Supervisor_comfort',
                        'Coworker_mental_health_discussion1',
                        'Medical_leave_ease', 'Health_disclosure', 'Emotions']
