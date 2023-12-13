@@ -147,7 +147,7 @@ def main():
            Emotions
           ]]
 
-    df = pd.DataFrame(data, columns=['Age','Gender','Past_disorder',
+    df_x = pd.DataFrame(data, columns=['Age','Gender','Past_disorder',
                                  'Family_history','Mental_health_treatment',
                                 'Employer_mental_health_importance2','Tech_industry_support',
                                 'Employer_physical_health_importance1','Health_benefits','Previous_benefits',
