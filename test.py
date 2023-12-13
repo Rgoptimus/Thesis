@@ -272,7 +272,7 @@ def main():
         
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
         
-        encoder = OrdinalEncoder(cols=['Age','Employees_count'])
+        encoder = OrdinalEncoder(columns=['Age','Employees_count'])
         
         data_encoding = encoder.fit_transform(encoded_data)
         
