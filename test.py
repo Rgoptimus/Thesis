@@ -5,22 +5,6 @@ import os
 import numpy as np
 import subprocess
 
-# Modul Statistik
-from sklearn.neural_network import MLPClassifier
-from sklearn.feature_selection import SelectKBest, f_classif
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score, classification_report
-
-
-from sklearn.experimental import enable_halving_search_cv
-from sklearn.model_selection import HalvingGridSearchCV
-
-# Install scikit-learn if not already installed
-try:
-    import sklearn
-except ImportError:
-    subprocess.call(['pip', 'install', 'streamlit', 'pandas', 'numpy', 'scikit-learn'])
-
 def load_model(file_path):
     with open(file_path, 'rb') as model_file:
         model = pickle.load(model_file)
