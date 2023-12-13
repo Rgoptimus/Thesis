@@ -27,6 +27,19 @@ file_path = os.path.abspath("mlp_model.pkl")
 # Load the machine learning model from the pickle file
 model = load_model(file_path)
 
+# Categorize_age Function
+def categorize_age(age):
+    if 11 <= age <= 26:
+        return '11-26'
+    if 27 <= age <= 42:
+        return '27-42'
+    if 43 <= age <= 58:
+        return '43-58'
+    if 59 <= age <= 68:
+        return '59-68'
+    else:
+        return 'Tidak diketahui'
+
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
 
