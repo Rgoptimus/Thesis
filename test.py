@@ -94,21 +94,6 @@ def main():
     Emotions = st.selectbox("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?", Emotions_options)
 
     st.markdown("""---""")
-    
-    # Allow the user to upload the pickle file
-    uploaded_file = st.file_uploader("Upload pickle file", type=["pkl"])
-
-    if uploaded_file is not None:
-        # Save the uploaded file to a local path
-        file_path = "uploaded_file.pkl"
-        with open(file_path, 'wb') as file:
-            file.write(uploaded_file.read())
-
-        # Load the model
-        model = load_model(file_path)
-
-        # Delete the temporary file
-        os.remove(file_path)
 
     # Create dataframe
     df = [['Age',
