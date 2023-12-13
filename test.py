@@ -15,10 +15,10 @@ def main():
     masalah_kesehatan1 = st.selectbox("Pernahkah Anda mengalami gangguan kesehatan mental sebelumnya?", masalah_kesehatan_sebelumnya1_options)
 
     masalah_kesehatan_sebelumnya2_options = ["Iya","Tidak","Tidak tahu"]
-    masalah_kesehatan2 = st.selectbox("Apakah ada riwayat gangguan kesehatan mental dalam keluarga Anda?", masalah_kesehatan_sebelumnya1_options)
+    masalah_kesehatan2 = st.selectbox("Apakah ada riwayat gangguan kesehatan mental dalam keluarga Anda?", masalah_kesehatan_sebelumnya2_options)
 
     masalah_kesehatan_sebelumnya3_options = ["Iya","Tidak"]
-    masalah_kesehatan3 = st.selectbox("Pernahkah Anda mencari perawatan dari profesional kesehatan mental untuk gangguan kesehatan mental?", masalah_kesehatan_sebelumnya1_options)
+    masalah_kesehatan3 = st.selectbox("Pernahkah Anda mencari perawatan dari profesional kesehatan mental untuk gangguan kesehatan mental?", masalah_kesehatan_sebelumnya3_options)
 
 
     # Menampilkan hasil
