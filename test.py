@@ -297,10 +297,7 @@ def main():
                             'Share_mental_illness_Very open',
                             'Gender_Male']
         
-        # Set all other dummy columns to 0
-        for column in top_feature_list:
-            if column not in encoded_data.columns:
-                encoded_data[column] = 0
+        
         
         # Reorder columns to match top_feature_list order
         encoded_data = encoded_data[top_feature_list]
