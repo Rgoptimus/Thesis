@@ -275,7 +275,7 @@ def main():
         # Assuming df is your DataFrame
         columns_to_encode = ['Age', 'Employees_count']
         
-        encoded_data = encode_columns(df, columns_to_encode)
+        encoded_data = encode_columns(encoded_data, columns_to_encode)
 
         st.dataframe(encoded_data)
 
