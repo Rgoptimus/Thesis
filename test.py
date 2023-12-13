@@ -9,7 +9,7 @@ import subprocess
 try:
     import sklearn
 except ImportError:
-    subprocess.call(['pip', 'install', 'scikit-learn'])
+    subprocess.call(['pip', 'install', 'streamlit', 'pandas', 'numpy', 'scikit-learn'])
 
 def load_model(file_path):
     with open(file_path, 'rb') as model_file:
