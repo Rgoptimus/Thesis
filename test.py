@@ -264,10 +264,13 @@ def main():
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
         
         # Assuming df is your DataFrame
-        encoder = OrdinalEncoder(cols=['Age', 'Employees_count'])
-        df_encoded = encoder.fit_transform(encoded_data)
+        columns_to_encode = ['Age', 'Employees_count']
         
-        data_encoding = encoder.fit_transform(df_encoded)
+        # Initialize the encoder
+        encoder = OrdinalEncoder()
+        
+        # Fit and transform the specified columns
+        encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
 
         top_feature_list =['Past_disorder_No',
                              'Past_disorder_Yes',
@@ -282,7 +285,7 @@ def main():
                              'Share_mental_illness_Very open',
                              'Gender_Male']
         
-        prediction_df = data_encoding[top_feature_list]
+        prediction_df = encoded_data[top_feature_list]
         
         prediction = model.predict(prediction_df)
 
