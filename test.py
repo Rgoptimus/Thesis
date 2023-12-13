@@ -107,15 +107,36 @@ def main():
     Health_disclosure_options = ["Iya","Tidak","Mungkin"]
     Health_disclosure = st.selectbox("Apakah anda bersedia untuk membicarakan masalah kesehatan fisik dengan calon pemberi kerja dalam wawancara kerja?", Health_disclosure_options)
 
-    Emotions_options = ["1-100","100-1000","Lebih dari 1000"]
-    Emotions = st.selectbox("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?", Emotions_options)
+    Emotions = st.text_input("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?")
 
     st.markdown("""---""")
 
     # Create dataframe
     df = [['Age',
-          'Gender'
+          'Gender',
+           'Past_disorder',
+           'Family_history',
+           'Mental_health_treatment',
+           'Employer_mental_health_importance2',
+           'Tech_industry_support',
+           'Employer_physical_health_importance1',
+           'Health_benefits,
+           'Previous_benefits',
+           'Mental_health_options',
+           'Share_mental_illness',
+           'Supervisor_comfort',
+           'Coworker_mental_health_discussion1',
+           'Coworker_mental_health_discussion2',
+           'Employer_mental_health_discussion',
+           'Employees_count',
+           'Medical_leave_ease',
+           'Health_disclosure',
+           'Emotions'
           ]]
+
+    st.dataframe(df)
+
+    st.markdown("""---""")
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
