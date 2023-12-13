@@ -272,6 +272,8 @@ def main():
         # Fit and transform the specified columns
         encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
 
+        st.dataframe(encoded_data)
+
         top_feature_list =['Past_disorder_No',
                              'Past_disorder_Yes',
                              'Family_history_No',
