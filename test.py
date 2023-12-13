@@ -304,8 +304,10 @@ def main():
         encoded_data = encoded_data[top_feature_list]
         
         prediction = model.predict(encoded_data)
-
+        
+        st.dataframe(encoded_data)
         st.write(prediction)
+        
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
