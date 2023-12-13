@@ -59,11 +59,22 @@ def main():
     
     st.subheader("Faktor – Faktor Tambahan")
     # Pertanyaan Faktor - Faktor Tambahan
+    Employees_count_options = ["1-100","100-1000","Lebih dari 1000"]
+    Employees_count = st.selectbox("Berapa jumlah karyawan di perusahaan atau organisasi anda bekerja?", Employees_count_options)
+
+    Medical_leave_ease_options = ["Sulit","Saya tidak tahu","Agak sulit","Agak mudah","Sangat mudah"]
+    Medical_leave_ease = st.selectbox("Jika masalah kesehatan mental mendorong anda untuk mengajukan cuti medis dari pekerjaan, seberapa mudah atau sulitnya untuk meminta cuti tersebut?", Medical_leave_ease_options)
+
+    Health_disclosure_options = ["Iya","Tidak","Mungkin"]
+    Health_disclosure = st.selectbox("Apakah anda bersedia untuk membicarakan masalah kesehatan fisik dengan calon pemberi kerja dalam wawancara kerja?", Health_disclosure_options)
+
+    Emotions_options = ["1-100","100-1000","Lebih dari 1000"]
+    Emotions = st.selectbox("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?", Emotions_options)
 
 
     # Menampilkan hasil
-    st.write(f"Usia: {usia} tahun")
-    st.write(f"Jenis Kelamin: {jenis_kelamin}")
+    st.write(f"Usia: {Age} tahun")
+    st.write(f"Jenis Kelamin: {Gender}")
 
 if __name__ == "__main__":
     main()
