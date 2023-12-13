@@ -3,6 +3,13 @@ import pickle
 import pandas as pd
 import os
 import numpy as np
+import subprocess
+
+# Install scikit-learn if not already installed
+try:
+    import sklearn
+except ImportError:
+    subprocess.call(['pip', 'install', 'scikit-learn'])
 
 def load_model(file_path):
     with open(file_path, 'rb') as model_file:
