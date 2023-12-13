@@ -147,14 +147,14 @@ def main():
            Emotions
           ]]
 
-    df_x = pd.DataFrame(data, columns=['Age','Gender','Past_disorder',
-                                     'Family_history','Mental_health_treatment',
-                                    'Employer_mental_health_importance2','Tech_industry_support',
-                                    'Employer_physical_health_importance1','Health_benefits','Previous_benefits',
-                                    'Mental_health_options','Share_mental_illness','Supervisor_comfort',
-                                    'Coworker_mental_health_discussion1','Coworker_mental_health_discussion2',
-                                    'Employer_mental_health_discussion','Employees_count','Mendical_leave_ease',
-                                    'Health_disclosure','Emotions'])
+    df = pd.DataFrame(data, columns=['Age','Gender','Past_disorder',
+                                 'Family_history','Mental_health_treatment',
+                                'Employer_mental_health_importance2','Tech_industry_support',
+                                'Employer_physical_health_importance1','Health_benefits','Previous_benefits',
+                                'Mental_health_options','Share_mental_illness','Supervisor_comfort',
+                                'Coworker_mental_health_discussion1','Coworker_mental_health_discussion2',
+                                'Employer_mental_health_discussion','Employees_count','Medical_leave_ease',
+                                'Health_disclosure','Emotions'])
 
     st.dataframe(df_x)
 
