@@ -17,9 +17,6 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import OrdinalEncoder
 import requests
 
-API_URL = "https://api-inference.huggingface.co/models/StevenLimcorn/indonesian-roberta-base-emotion-classifier"
-headers = {"Authorization": f"Bearer {API_TOKEN}"}
-
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
 	return response.json()
@@ -313,11 +310,6 @@ def main():
         encoded_data = encoded_data[top_feature_list]
         
         prediction = model.predict(encoded_data)
-
-        
-
-        output = query({
-	    "inputs": "I like you. I love you",})
         
         st.dataframe(encoded_data)
         st.write(prediction)
