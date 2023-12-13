@@ -22,7 +22,7 @@ def load_model(file_path):
     return model
 
 # Get the absolute path to the file
-file_path = os.path.abspath("Thesis/mlp_model.pkl")
+file_path = os.path.abspath("mlp_model.pkl")
 
 # Load the machine learning model from the pickle file
 model = load_model(file_path)
