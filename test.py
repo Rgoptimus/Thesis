@@ -296,6 +296,15 @@ def main():
         
         # Reorder columns to match top_feature_list order
         encoded_data = encoded_data[top_feature_list]
+
+        # List of columns to encode
+        columns_to_encode = ['Age', 'Employees_count']
+        
+        # Initialize the OrdinalEncoder
+        encoder = OrdinalEncoder()
+        
+        # Fit and transform the selected columns
+        encoded_data[columns_to_encode] = encoder.fit_transform(encoded_data[columns_to_encode])
         
         prediction = model.predict(encoded_data)
         
