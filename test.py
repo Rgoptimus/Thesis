@@ -280,9 +280,9 @@ def main():
         
         prediction_df = data_encoding[top_feature_list]
         
-        prediction = mlp.predict(prediction_df)
+        prediction = model.predict(prediction_df)
 
-    st.write(f"Hasil Prediksi: {prediction}")
+    st.write(prediction)
 
     # Menampilkan hasil
     st.write(f"Usia: {Age} tahun")
