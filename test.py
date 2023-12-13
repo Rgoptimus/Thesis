@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import os
+import numpy as np
 
 def load_model(file_path):
     with open(file_path, 'rb') as model_file:
