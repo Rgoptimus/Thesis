@@ -12,6 +12,8 @@ def main():
     Gender_options = ["Laki-laki", "Perempuan"]
     Gender = st.selectbox("Jenis kelamin Anda apa?", Gender_options)
 
+    st.markdown("""---""")
+
     st.subheader("Permasalahan Kesehatan Mental Sebelumnya")
     # Pertanyaan Masalah Kesehatan Sebelumnya
     Past_disorder_options = ["Iya","Tidak","Tidak tahu"]
@@ -23,11 +25,15 @@ def main():
     Mental_health_treatment_options = ["Iya", "Tidak"]
     Mental_health_treatment = st.selectbox("Pernahkah Anda mencari perawatan dari profesional kesehatan mental untuk gangguan kesehatan mental?", Mental_health_treatment_options)
 
+    st.markdown("""---""")
+
     st.subheader("Pentingnya Kesehatan Mental di Tempat Kerja")
     # Pertanyaan Pentingnya Kesehatan Mental di Tempat Kerja
     Employer_mental_health_importance2 = st.slider("Seberapa penting menurut Anda perusahaan Anda menghargai kesehatan mental?", min_value=0, max_value=10, value=1)
     Tech_industry_support = st.slider("Bagaimana menurut Anda dukungan yang diberikan perusahaan Anda kepada karyawan yang memiliki permasalahan kesehatan mental?", min_value=0, max_value=5, value=1)
     Employer_physical_health_importance1 = st.slider("Seberapa penting menurut Anda perusahaan Anda dalam menghargai kesehatan fisik?", min_value=0, max_value=10, value=1)
+
+    st.markdown("""---""")
     
     st.subheader("Manfaat Kesehatan Mental di Tempat Kerja")
     # Pertanyaan Manfaat Kesehatan Mental di Tempat Kerja
@@ -39,6 +45,8 @@ def main():
 
     Mental_health_options_options = ["Iya","Tidak","Tidak tahu"]
     Mental_health_options = st.selectbox("Apakah Anda mengetahui opsi perawatan kesehatan mental yang disediakan oleh perusahaan – perusahaan sebelumnya tempat Anda bekerja?", Mental_health_options_options)
+
+    st.markdown("""---""")
     
     st.subheader("Kenyamanan Berbicara tentang Kesehatan Mental")
     # Pertanyaan Kenyamanan Berbicara tertang Kesehatan Mental
@@ -56,6 +64,8 @@ def main():
 
     Employer_mental_health_discussion_options = ["Iya","Tidak"]
     Employer_mental_health_discussion = st.selectbox("Pernahkah Anda membicarakan masalah kesehatan mental dengan atasan Anda?", Employer_mental_health_discussion_options)
+
+    st.markdown("""---""")
     
     st.subheader("Faktor – Faktor Tambahan")
     # Pertanyaan Faktor - Faktor Tambahan
