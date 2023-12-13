@@ -4,7 +4,7 @@ import pandas as pd
 
 # Load pickle file
 def load_model(file_path):
-    with open(file_path, 'rb') as model_file:
+    with open(Thesis, 'rb') as model_file:
         model = pickle.load(model_file)
     return model
 
