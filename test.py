@@ -120,7 +120,7 @@ def main():
            'Employer_mental_health_importance2',
            'Tech_industry_support',
            'Employer_physical_health_importance1',
-           'Health_benefits,
+           'Health_benefits',
            'Previous_benefits',
            'Mental_health_options',
            'Share_mental_illness',
