@@ -176,7 +176,7 @@ def main():
     if submit_button:
         st.dataframe(df_x)
   		    
-    st.markdown("""---""")
+    	st.markdown("""---""")
 
     # Menambah tombol "Predict"
     predict_button = st.button("Predict")
