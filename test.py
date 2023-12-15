@@ -174,19 +174,14 @@ def main():
     # Check if the button is clicked
     if submit_button:
         st.dataframe(df_x)
-st.write(f"Usia: {Age} tahun")
-st.write(f"Jenis Kelamin: {Gender}")
-st.write(f"Pengalaman Masa Lalu: {Past_disorder}")
-st.write(f"Pengalaman Masa Lalu Keluarga: {Family_history}")
-    		
-    	
-	    
+    		    
     st.markdown("""---""")
+
     # Menambah tombol "Predict"
     predict_button = st.button("Predict")
 
 
-    # Check if the button is clicked
+    # Membuat fungsi if apabila tombol predict ditekan
     if predict_button:
         df_x['Gender'] = df_x['Gender'].replace({
                         'Laki-laki':'Male',
