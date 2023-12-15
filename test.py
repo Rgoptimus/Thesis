@@ -174,6 +174,11 @@ def main():
     # Check if the button is clicked
     if submit_button:
         st.dataframe(df_x)
+	# Menampilkan Resume
+    	st.write(f"Usia: {Age} tahun")
+    	st.write(f"Jenis Kelamin: {Gender}")
+	st.write(f"Pengalaman Masa Lalu: {Past_disorder}")
+	st.write(f"Pengalaman Masa Lalu Keluarga: {Family_history}")
 	    
     st.markdown("""---""")
     # Menambah tombol "Predict"
@@ -316,10 +321,6 @@ def main():
         st.dataframe(encoded_data)
         st.write(prediction)
         
-
-    # Menampilkan hasil
-    st.write(f"Usia: {Age} tahun")
-    st.write(f"Jenis Kelamin: {Gender}")
 
 if __name__ == "__main__":
     main()
