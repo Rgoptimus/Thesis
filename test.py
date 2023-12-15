@@ -173,11 +173,8 @@ def main():
     submit_button = st.button("Submit")
     # Check if the button is clicked
     if submit_button:
-	    st.write("test ajala")
         st.dataframe(df_x)
-
-    
-    		    
+  		    
     st.markdown("""---""")
 
     # Menambah tombol "Predict"
@@ -191,33 +188,33 @@ def main():
                         'Perempuan' : 'Female'})
 
         df_x['Past_disorder'] = df_x['Past_disorder'].replace({
-                                'Iya' : 'Yes',
-                                'Tidak' : 'No',
-                                'Tidak tahu' : "I don't know"})
+                                'Iya': 'Yes',
+                                'Tidak': 'No',
+                                'Tidak tahu': "I don't know"})
 
         df_x['Family_history'] = df_x['Past_disorder'].replace({
-                                'Iya' : 'Yes',
-                                'Tidak' : 'No',
-                                'Tidak tahu' : "I don't know"})
+                                'Iya': 'Yes',
+                                'Tidak': 'No',
+                                'Tidak tahu': "I don't know"})
 
         df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].replace({
-                                        'Iya' : '1',
-                                        'Tidak' : '0'})
+                                        'Iya': 1,
+                                        'Tidak': 0})
 
         df_x['Health_benefits'] = df_x['Health_benefits'].replace({
-                                    'Iya' : 'Yes',
-                                    'Tidak' : 'No',
-                                    'Tidak tahu' : "I don't know"})
+                                    'Iya': 'Yes',
+                                    'Tidak': 'No',
+                                    'Tidak tahu': "I don't know"})
 
         df_x['Previous_benefits'] = df_x['Previous_benefits'].replace({
-                                    'Iya' : 'Yes',
-                                    'Tidak' : 'No',
-                                    'Tidak tahu' : "I don't know"})
+                                    'Iya': 'Yes',
+                                    'Tidak': 'No',
+                                    'Tidak tahu': "I don't know"})
 
         df_x['Mental_health_options'] = df_x['Mental_health_options'].replace({
-                                        'Iya' : 'Yes',
-                                        'Tidak' : 'No',
-                                        'Tidak tahu' : "I don't know"})
+                                        'Iya': 'Yes',
+                                        'Tidak': 'No',
+                                        'Tidak tahu': "I don't know"})
 
         df_x['Share_mental_illness'] = df_x['Share_mental_illness'].replace({
                                         'Tidak berlaku untuk saya' : 'Not applicable to me (I do not have a mental illness)',
@@ -228,36 +225,36 @@ def main():
                                         'Sangat terbuka' : 'Very open'})
 
         df_x['Supervisor_comfort'] = df_x['Supervisor_comfort'].replace({
-                                    'Iya' : 'Yes',
-                                    'Tidak' : 'No',
-                                    'Mungkin' : 'Maybe'})
+                                    'Iya': 'Yes',
+                                    'Tidak': 'No',
+                                    'Mungkin': 'Maybe'})
 
         df_x['Coworker_mental_health_discussion1'] = df_x['Coworker_mental_health_discussion1'].replace({
-                                                    'Iya' : 'Yes',
-                                                    'Tidak' : 'No',
-                                                    'Mungkin' : 'Maybe'})
+                                                    'Iya': 'Yes',
+                                                    'Tidak': 'No',
+                                                    'Mungkin': 'Maybe'})
 
         df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].replace({
-                                                    'Iya' : '1',
-                                                    'Tidak' : '0'})
+                                                    'Iya': 1,
+                                                    'Tidak': 0})
 
         df_x['Employer_mental_health_discussion'] = df_x['Employer_mental_health_discussion'].replace({
-                                                    'Iya' : '1',
-                                                    'Tidak' : '0'})
+                                                    'Iya': 1,
+                                                    'Tidak': 0})
 
 
         df_x['Medical_leave_ease'] = df_x['Medical_leave_ease'].replace({
             'Sulit' : 'Difficult',
             'Saya tidak tahu' : "I don't know",
-            'Agak sulit' : 'Somewhat difficult',
-            'Agak mudah' : 'Somewhat easy',
+            'Agak sulit': 'Somewhat difficult',
+            'Agak mudah': 'Somewhat easy',
             'Sangat mudah' : 'Very easy'
         })
         
         df_x['Health_disclosure'] = df_x['Health_disclosure'].replace({
-            'Iya' : 'Yes',
-            'Tidak' : 'No',
-            'Mungkin' : 'Maybe'
+            'Iya': 'Yes',
+            'Tidak': 'No',
+            'Mungkin': 'Maybe'
         })
         
         df_x['Employees_count'] = df_x['Employees_count'].replace({
