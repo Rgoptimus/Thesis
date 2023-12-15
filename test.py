@@ -170,8 +170,12 @@ def main():
                                 'Coworker_mental_health_discussion1','Coworker_mental_health_discussion2',
                                 'Employer_mental_health_discussion','Employees_count','Medical_leave_ease',
                                 'Health_disclosure','Emotions'])
-
-    st.dataframe(df_x)
+	
+    # Menambah tombol "Submit"
+    submit_button = st.button("Submit")
+    # Check if the button is clicked
+    if submit_button:
+        st.dataframe(df_x)
 
     # Menambah tombol "Predict"
     predict_button = st.button("Predict")
