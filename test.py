@@ -171,6 +171,7 @@ def main():
 	
     # Menambah tombol "Submit"
     submit_button = st.button("Submit")
+	
     # Check if the button is clicked
     if submit_button:
         st.dataframe(df_x)
@@ -258,9 +259,9 @@ def main():
         })
         
         df_x['Employees_count'] = df_x['Employees_count'].replace({
-            '1-100' : 0,
-            '100-1000' : 1,
-            'Lebih dari 1000' : 2
+            '1-100': 0,
+            '100-1000': 1,
+            'Lebih dari 1000': 2
         })
         
         df_x['Age'] = df_x['Age'].astype('int')
