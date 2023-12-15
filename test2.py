@@ -174,8 +174,7 @@ def main():
 	
     # Check if the button is clicked
     if submit_button:
-        st.dataframe(df_x)
-  		    
+        st.dataframe(df_x)    
     	st.markdown("""---""")
 
     # Menambah tombol "Predict"
