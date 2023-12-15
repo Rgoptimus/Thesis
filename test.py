@@ -174,7 +174,8 @@ def main():
     # Check if the button is clicked
     if submit_button:
         st.dataframe(df_x)
-	st.write("test ajala")
+
+    st.write("test ajala")
     		    
     st.markdown("""---""")
 
