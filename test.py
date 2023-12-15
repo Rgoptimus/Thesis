@@ -176,6 +176,7 @@ def main():
     # Check if the button is clicked
     if submit_button:
         st.dataframe(df_x)
+	    
 
     # Menambah tombol "Predict"
     predict_button = st.button("Predict")
