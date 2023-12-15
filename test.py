@@ -137,8 +137,6 @@ def main():
 
     Emotions = st.text_input("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?")
 
-    st.markdown("""---""")
-
     # Membuat dataframe
     data = [[Age,
           Gender,
@@ -177,11 +175,10 @@ def main():
     if submit_button:
         st.dataframe(df_x)
 	    
-
+    st.markdown("""---""")
     # Menambah tombol "Predict"
     predict_button = st.button("Predict")
 
-    st.markdown("""---""")
 
     # Check if the button is clicked
     if predict_button:
