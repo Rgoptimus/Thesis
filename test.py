@@ -173,7 +173,7 @@ def main():
     submit_button = st.button("Submit")
     # Check if the button is clicked
     if submit_button:
-	st.write("test ajala")
+	    st.write("test ajala")
         st.dataframe(df_x)
 
     
