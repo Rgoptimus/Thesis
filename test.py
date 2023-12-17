@@ -303,7 +303,7 @@ def main():
 
         prediction[0] = prediction[0].replace({
             'No': 'Tidak memiliki permasalahan kesehatan mental',
-            'Yes': 'Memiliki permasalahan kesehatan mental')}
+            'Yes': 'Memiliki permasalahan kesehatan mental'})
 
         st.dataframe(encoded_data)
         st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
