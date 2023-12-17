@@ -303,7 +303,7 @@ def main():
 
         st.dataframe(encoded_data)
         st.write(prediction)
-        st.write(emotion_result[0])
+        st.write(emotion_result[0]['label'])
 
 if __name__ == "__main__":
     main()
