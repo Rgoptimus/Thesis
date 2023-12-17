@@ -10,11 +10,6 @@ from sklearn.preprocessing import OrdinalEncoder
 import requests
 from transformers import pipeline
 
-# Function to query API
-def query(payload):
-    response = requests.post(API_URL, headers=headers, json=payload)
-    return response.json()
-
 # Function to load the model from a pickle file
 def load_model(file_path):
     with open(file_path, 'rb') as model_file:
@@ -162,7 +157,7 @@ def main():
     # Menambah tombol "Submit"
     submit_button = st.button("Submit")
     
-    # Check if the button is clicked
+    # Menambah keadaan apabila tombol ditekan
     if submit_button:
         st.dataframe(df_x)
     
@@ -301,7 +296,9 @@ def main():
         encoded_data = encoded_data[top_feature_list]
 
         text_input = df_x.loc[0, 'Emotions']
-        emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
+        model_name = 'StevenLimcorn/indonesian-roberta-base-emotion-classifier'
+        tokenizer = 'StevenLimcorn/indonesian-roberta-base-emotion-classifier'
+        emotion = pipeline('sentiment-analysis', model=model_name, tokenizer=tokenizer)
         emotion_result = emotion(text_input)
 
         prediction = model.predict(encoded_data)
