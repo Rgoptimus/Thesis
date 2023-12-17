@@ -302,7 +302,7 @@ def main():
         prediction = model.predict(encoded_data)
 
         st.dataframe(encoded_data)
-        st.write("Hasil Prediksi kesehatan mental: ", prediction)
+        st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
         st.write(emotion_result[0]['label'])
 
 if __name__ == "__main__":
