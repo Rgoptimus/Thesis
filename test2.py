@@ -316,10 +316,11 @@ def main():
         prediction = model.predict(encoded_data)
 
 	emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
+	emotion_result = emotion(df_x['Emotions'])
 
         st.dataframe(encoded_data)
         st.write(prediction)
-	st.write(emotion(df_x['Emotions']))
+	st.write(emotion_result)
         
 
 if __name__ == "__main__":
