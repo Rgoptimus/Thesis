@@ -309,7 +309,7 @@ def main():
 
         st.dataframe(encoded_data)
         st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
-        st.write(emotion_result[0]['label'])
+        st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
 
 if __name__ == "__main__":
     main()
