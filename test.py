@@ -310,6 +310,36 @@ def main():
         st.dataframe(encoded_data)
         st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
         st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
+        st.title('Grafik Tingkat Darurat')
+
+        # Mendefinisikan tingkat darurat dan warna
+        levels = ['Tingkat Darurat Rendah', 'Tingkat Darurat Menengah', 'Tingkat Darurat Tinggi']
+        colors = ['green', 'yellow', 'red']
+    
+        # Mendefinisikan proporsi dari setiap tingkat darurat
+        proportions = [0.4, 0.3, 0.3]
+    
+        # Membuat gambar dan sumbu
+        fig, ax = plt.subplots(figsize=(8, 4))
+    
+        # Membuat elips dengan tiga bagian sesuai proporsi
+        start = 0
+        for i, (level, color, proportion) in enumerate(zip(levels, colors, proportions)):
+            wedge = patches.Wedge((0, 0), 1, start, start + proportion * 360, facecolor=color, edgecolor='black')
+            ax.add_patch(wedge)
+            start += proportion * 360
+    
+            # Menambahkan label untuk setiap tingkat darurat
+            label_position = start - proportion * 360 / 2
+            x_label = 0.7 * plt.cos(label_position * np.pi / 180)
+            y_label = 0.7 * plt.sin(label_position * np.pi / 180)
+            ax.text(x_label, y_label, level, ha='center', va='center', fontsize=10, color='black')
+    
+        # Menghilangkan sumbu untuk tampilan yang lebih baik
+        ax.axis('off')
+    
+        # Menampilkan grafik pada Streamlit
+        st.pyplot(fig)
 
 if __name__ == "__main__":
     main()
