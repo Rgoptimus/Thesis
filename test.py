@@ -170,22 +170,7 @@ def main():
                                 'Employer_mental_health_discussion','Employees_count','Medical_leave_ease',
                                 'Health_disclosure','Emotions'])
 	
-    # Menambah tombol "Submit"
-    submit_button = st.button("Submit")
-	
-    # Check if the button is clicked
-    if submit_button:
-        st.dataframe(df_x)
-  		    
-    st.markdown("""---""")
-
-    # Menambah tombol "Predict"
-    predict_button = st.button("Predict")
-
-
-    # Membuat fungsi if apabila tombol predict ditekan
-    if predict_button:
-        df_x['Gender'] = df_x['Gender'].replace({
+	df_x['Gender'] = df_x['Gender'].replace({
                         'Laki-laki':'Male',
                         'Perempuan' : 'Female'})
 
@@ -310,6 +295,22 @@ def main():
         for column in top_feature_list:
             if column not in encoded_data.columns:
                 encoded_data[column] = 0
+    # Menambah tombol "Submit"
+    submit_button = st.button("Submit")
+	
+    # Check if the button is clicked
+    if submit_button:
+        st.dataframe(df_x)
+  		    
+    st.markdown("""---""")
+
+    # Menambah tombol "Predict"
+    predict_button = st.button("Predict")
+
+
+    # Membuat fungsi if apabila tombol predict ditekan
+    if predict_button:
+        
         
         # Reorder columns to match top_feature_list order
         encoded_data = encoded_data[top_feature_list]
