@@ -314,9 +314,12 @@ def main():
         encoded_data = encoded_data[top_feature_list]
         
         prediction = model.predict(encoded_data)
-        
+
+	emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
+
         st.dataframe(encoded_data)
         st.write(prediction)
+	st.write(emotion(df_x['Emotions'))
         
 
 if __name__ == "__main__":
