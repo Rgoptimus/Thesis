@@ -9,6 +9,9 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import OrdinalEncoder
 import requests
 from transformers import pipeline
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
 
 # Function to load the model from a pickle file
 def load_model(file_path):
