@@ -296,16 +296,14 @@ def main():
         encoded_data = encoded_data[top_feature_list]
 
         text_input = df_x.loc[0, 'Emotions']
-        model_name = 'StevenLimcorn/indonesian-roberta-base-emotion-classifier'
-        tokenizer = 'StevenLimcorn/indonesian-roberta-base-emotion-classifier'
-        emotion = pipeline('sentiment-analysis', model=model_name, tokenizer=tokenizer)
+        emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
         emotion_result = emotion(text_input)
 
         prediction = model.predict(encoded_data)
 
         st.dataframe(encoded_data)
         st.write(prediction)
-        st.write(emotion_result)
+        st.write(emotion_result[0])
 
 if __name__ == "__main__":
     main()
