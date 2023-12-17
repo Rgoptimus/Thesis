@@ -16,6 +16,7 @@ import subprocess
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import OrdinalEncoder
 import requests
+from transformers import pipeline
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
