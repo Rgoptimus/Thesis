@@ -1,13 +1,5 @@
 import subprocess
 import streamlit as st
-
-# Install The dependencies
-st.text("Installing dependencies...")
-subprocess.run(["pip", "install", "-r", "requirements.txt"])
-
-st.success("Dependencies installed successfully!")
-
-import streamlit as st
 import pickle
 import pandas as pd
 import os
@@ -18,23 +10,26 @@ from sklearn.preprocessing import OrdinalEncoder
 import requests
 from transformers import pipeline
 
+# Function to query API
 def query(payload):
-	response = requests.post(API_URL, headers=headers, json=payload)
-	return response.json()
+    response = requests.post(API_URL, headers=headers, json=payload)
+    return response.json()
 
-# Memanggil pikle file
+# Function to load the model from a pickle file
 def load_model(file_path):
     with open(file_path, 'rb') as model_file:
         model = pickle.load(model_file)
     return model
 
-# Memanggil lokasi pikle file
-file_path = os.path.abspath("mlp_model_fix.pkl")
+# Constants
+API_URL = "your_api_url_here"
+headers = {"Content-Type": "application/json"}
 
-# Memanggil model machine learning untuk prediksi
+# Load model
+file_path = os.path.abspath("mlp_model_fix.pkl")
 model = load_model(file_path)
 
-# Mengkategorikan umur
+# Function to categorize age
 def categorize_age(age):
     if 11 <= age <= 26:
         return '11-26'
@@ -47,153 +42,44 @@ def categorize_age(age):
     else:
         return 'Tidak diketahui'
 
+# Function to encode categorical columns
 def encode_columns(df, columns_to_encode):
     encoder = OrdinalEncoder()
     df[columns_to_encode] = encoder.fit_transform(df[columns_to_encode])
-
-    # Map the encoded values to 1 and 0
     df[columns_to_encode] = df[columns_to_encode].astype(int)
-
     return df
 
+# Streamlit app
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
-
     st.markdown("""---""")
     
-    st.subheader("Usia dan Identitas")
+    # ... (Rest of your code)
 
-    # Pertanyaan Usia
-    Age = st.slider("Berapa usia Anda?", min_value=11, max_value=68, value=25)
-
-    # Pertanyaan Jenis Kelamin
-    Gender_options = ["Laki-laki", "Perempuan"]
-    Gender = st.selectbox("Jenis kelamin Anda apa?", Gender_options)
-
-    st.markdown("""---""")
-
-    st.subheader("Permasalahan Kesehatan Mental Sebelumnya")
-    # Pertanyaan Masalah Kesehatan Sebelumnya
-    Past_disorder_options = ["Iya","Tidak","Tidak tahu"]
-    Past_disorder = st.selectbox("Pernahkah Anda mengalami gangguan kesehatan mental sebelumnya?", Past_disorder_options)
-
-    Family_history_options = ["Iya", "Tidak", "Tidak tahu"]
-    Family_history = st.selectbox("Apakah ada riwayat gangguan kesehatan mental dalam keluarga Anda?", Family_history_options)
-
-    Mental_health_treatment_options = ["Iya", "Tidak"]
-    Mental_health_treatment = st.selectbox("Pernahkah Anda mencari perawatan dari profesional kesehatan mental untuk gangguan kesehatan mental?", Mental_health_treatment_options)
-
-    st.markdown("""---""")
-
-    st.subheader("Pentingnya Kesehatan Mental di Tempat Kerja")
-    # Pertanyaan Pentingnya Kesehatan Mental di Tempat Kerja
-    Employer_mental_health_importance2 = st.slider("Seberapa penting menurut Anda perusahaan Anda menghargai kesehatan mental?", min_value=0, max_value=10, value=1)
-    Tech_industry_support = st.slider("Bagaimana menurut Anda dukungan yang diberikan perusahaan Anda kepada karyawan yang memiliki permasalahan kesehatan mental?", min_value=0, max_value=5, value=1)
-    Employer_physical_health_importance1 = st.slider("Seberapa penting menurut Anda perusahaan Anda dalam menghargai kesehatan fisik?", min_value=0, max_value=10, value=1)
-
-    st.markdown("""---""")
-    
-    st.subheader("Manfaat Kesehatan Mental di Tempat Kerja")
-    # Pertanyaan Manfaat Kesehatan Mental di Tempat Kerja
-    Health_benefits_options = ["Iya","Tidak","Tidak tahu"]
-    Health_benefits = st.selectbox("Apakah perusahaan Anda menyediakan manfaat kesehatan mental sebagai bagian dari cakupan perawatan kesehatan mental?", Health_benefits_options)
-    
-    Previous_benefits_options = ["Iya","Tidak","Tidak tahu"]
-    Previous_benefits = st.selectbox("Apakah perusahaan – perusahaan sebelumnya Anda menyediakan manfaat kesehatan mental?", Previous_benefits_options)
-
-    Mental_health_options_options = ["Iya","Tidak","Tidak tahu"]
-    Mental_health_options = st.selectbox("Apakah Anda mengetahui opsi perawatan kesehatan mental yang disediakan oleh perusahaan – perusahaan sebelumnya tempat Anda bekerja?", Mental_health_options_options)
-
-    st.markdown("""---""")
-    
-    st.subheader("Kenyamanan Berbicara tentang Kesehatan Mental")
-    # Pertanyaan Kenyamanan Berbicara tertang Kesehatan Mental
-    Share_mental_illness_options = ["Tidak berlaku untuk saya","Tidak terbuka sama sekali","Netral","Agak tidak terbuka","Agak terbuka","Sangat terbuka"]
-    Share_mental_illness = st.selectbox("Seberapa bersedia Anda untuk berbicara kepada teman dan keluarga bahwa Anda memiliki masalah kesehatan mental?", Share_mental_illness_options)
-
-    Supervisor_comfort_options = ["Iya","Tidak","Mungkin"]
-    Supervisor_comfort = st.selectbox("Apakah Anda merasa nyaman untuk berbicara tentang masalah kesehatan mental dengan atasan langsung Anda?", Supervisor_comfort_options)
-
-    Coworker_mental_health_discussion1_options = ["Iya","Tidak","Mungkin"]
-    Coworker_mental_health_discussion1 = st.selectbox("Apakah Anda merasa nyaman untuk berbicara tentang masalah kesehatan mental dengan rekan kerja Anda?", Coworker_mental_health_discussion1_options)
-
-    Coworker_mental_health_discussion2_options = ["Iya","Tidak"]
-    Coworker_mental_health_discussion2 = st.selectbox("Pernahkah Anda membicarakan masalah kesehatan mental dengan rekan kerja Anda?", Coworker_mental_health_discussion2_options)
-
-    Employer_mental_health_discussion_options = ["Iya","Tidak"]
-    Employer_mental_health_discussion = st.selectbox("Pernahkah Anda membicarakan masalah kesehatan mental dengan atasan Anda?", Employer_mental_health_discussion_options)
-
-    st.markdown("""---""")
-    
-    st.subheader("Faktor – Faktor Tambahan")
-    # Pertanyaan Faktor - Faktor Tambahan
-    Employees_count_options = ["1-100","100-1000","Lebih dari 1000"]
-    Employees_count = st.selectbox("Berapa jumlah karyawan di perusahaan atau organisasi anda bekerja?", Employees_count_options)
-
-    Medical_leave_ease_options = ["Sulit","Saya tidak tahu","Agak sulit","Agak mudah","Sangat mudah"]
-    Medical_leave_ease = st.selectbox("Jika masalah kesehatan mental mendorong anda untuk mengajukan cuti medis dari pekerjaan, seberapa mudah atau sulitnya untuk meminta cuti tersebut?", Medical_leave_ease_options)
-
-    Health_disclosure_options = ["Iya","Tidak","Mungkin"]
-    Health_disclosure = st.selectbox("Apakah anda bersedia untuk membicarakan masalah kesehatan fisik dengan calon pemberi kerja dalam wawancara kerja?", Health_disclosure_options)
-
-    Emotions = st.text_input("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?")
-
-    # Membuat dataframe
-    data = [[Age,
-          Gender,
-           Past_disorder,
-           Family_history,
-           Mental_health_treatment,
-           Employer_mental_health_importance2,
-           Tech_industry_support,
-           Employer_physical_health_importance1,
-           Health_benefits,
-           Previous_benefits,
-           Mental_health_options,
-           Share_mental_illness,
-           Supervisor_comfort,
-           Coworker_mental_health_discussion1,
-           Coworker_mental_health_discussion2,
-           Employer_mental_health_discussion,
-           Employees_count,
-           Medical_leave_ease,
-           Health_disclosure,
-           Emotions
-          ]]
-
-    df_x = pd.DataFrame(data, columns=['Age','Gender','Past_disorder',
-                                 'Family_history','Mental_health_treatment',
-                                'Employer_mental_health_importance2','Tech_industry_support',
-                                'Employer_physical_health_importance1','Health_benefits','Previous_benefits',
-                                'Mental_health_options','Share_mental_illness','Supervisor_comfort',
-                                'Coworker_mental_health_discussion1','Coworker_mental_health_discussion2',
-                                'Employer_mental_health_discussion','Employees_count','Medical_leave_ease',
-                                'Health_disclosure','Emotions'])
-	
     # Menambah tombol "Submit"
     submit_button = st.button("Submit")
-	
+    
     # Check if the button is clicked
     if submit_button:
         st.dataframe(df_x)
-  		    
+    
     st.markdown("""---""")
-
+    
     # Menambah tombol "Predict"
     predict_button = st.button("Predict")
 
     # Membuat fungsi if apabila tombol predict ditekan
     if predict_button:
-	df_x['Gender'] = df_x['Gender'].replace({
-                        'Laki-laki':'Male',
-                        'Perempuan' : 'Female'})
+        df_x['Gender'] = df_x['Gender'].replace({
+                            'Laki-laki':'Male',
+                            'Perempuan' : 'Female'})
 
         df_x['Past_disorder'] = df_x['Past_disorder'].replace({
                                 'Iya': 'Yes',
                                 'Tidak': 'No',
                                 'Tidak tahu': "I don't know"})
 
-        df_x['Family_history'] = df_x['Past_disorder'].replace({
+        df_x['Family_history'] = df_x['Family_history'].replace({
                                 'Iya': 'Yes',
                                 'Tidak': 'No',
                                 'Tidak tahu': "I don't know"})
@@ -243,7 +129,6 @@ def main():
                                                     'Iya': 1,
                                                     'Tidak': 0})
 
-
         df_x['Medical_leave_ease'] = df_x['Medical_leave_ease'].replace({
             'Sulit' : 'Difficult',
             'Saya tidak tahu' : "I don't know",
@@ -251,45 +136,45 @@ def main():
             'Agak mudah': 'Somewhat easy',
             'Sangat mudah' : 'Very easy'
         })
-        
+
         df_x['Health_disclosure'] = df_x['Health_disclosure'].replace({
             'Iya': 'Yes',
             'Tidak': 'No',
             'Mungkin': 'Maybe'
         })
-        
+
         df_x['Employees_count'] = df_x['Employees_count'].replace({
             '1-100': 0,
             '100-1000': 1,
             'Lebih dari 1000': 2
         })
-        
+
         df_x['Age'] = df_x['Age'].astype('int')
         df_x['Age'] = df_x['Age'].apply(categorize_age)
-        
+
         df_x['Employer_physical_health_importance1'] = df_x['Employer_physical_health_importance1'].astype('float')
         df_x['Employer_mental_health_importance2'] = df_x['Employer_mental_health_importance2'].astype('float')
         df_x['Tech_industry_support'] = df_x['Tech_industry_support'].astype('float')
         df_x['Employer_mental_health_discussion'] = df_x['Employer_mental_health_discussion'].astype('float')
         df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].astype('int')
         df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].astype('float')
-        
+
         df_x['Age'] = df_x['Age'].replace({
             '11-26' : 0,
             '27-42' : 1,
             '43-58' : 2,
             '59-68' : 3
         })
-        
+
         list_columns = ['Gender', 'Past_disorder', 'Family_history',
-                       'Health_benefits', 'Previous_benefits',
-                       'Mental_health_options', 'Share_mental_illness', 'Supervisor_comfort',
-                       'Coworker_mental_health_discussion1',
-                       'Medical_leave_ease', 'Health_disclosure', 'Emotions']
-        
+                        'Health_benefits', 'Previous_benefits',
+                        'Mental_health_options', 'Share_mental_illness', 'Supervisor_comfort',
+                        'Coworker_mental_health_discussion1',
+                        'Medical_leave_ease', 'Health_disclosure', 'Emotions']
+
         encoded_data = pd.get_dummies(df_x, columns=list_columns)
         encoded_data.replace(True, 1, inplace=True)
-        
+
         # List of top features
         top_feature_list = ['Past_disorder_No',
                             'Past_disorder_Yes',
@@ -303,27 +188,24 @@ def main():
                             'Age',
                             'Share_mental_illness_Very open',
                             'Gender_Male']
-        
-        
+
         # Set all other dummy columns to 0
         for column in top_feature_list:
             if column not in encoded_data.columns:
                 encoded_data[column] = 0
-        
-        
+
         # Reorder columns to match top_feature_list order
         encoded_data = encoded_data[top_feature_list]
 
-	text_input = df_x.loc[0, 'Emotions']
-	emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
-	emotion_result = emotion(text_input)
-        
+        text_input = df_x.loc[0, 'Emotions']
+        emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
+        emotion_result = emotion(text_input)
+
         prediction = model.predict(encoded_data)
-        
+
         st.dataframe(encoded_data)
         st.write(prediction)
-	st.write(emotion_result)
-        
+        st.write(emotion_result)
 
 if __name__ == "__main__":
     main()
