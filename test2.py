@@ -323,7 +323,16 @@ def main():
         st.dataframe(encoded_data)
         st.write(prediction)
 	
-        
+API_URL = "https://api-inference.huggingface.co/models/StevenLimcorn/indonesian-roberta-base-emotion-classifier"
+headers = {"Authorization": f"Bearer {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}"}
+
+def query(payload):
+	response = requests.post(API_URL, headers=headers, json=payload)
+	return response.json()
+	
+output = query({
+	"inputs": "I like you. I love you",
+})
 
 if __name__ == "__main__":
     main()
