@@ -301,6 +301,10 @@ def main():
 
         prediction = model.predict(encoded_data)
 
+        prediction[0] = prediction[0].replace({
+            'No': 'Tidak memiliki permasalahan kesehatan mental',
+            'Yes': 'Memiliki permasalahan kesehatan mental')}
+
         st.dataframe(encoded_data)
         st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
         st.write(emotion_result[0]['label'])
