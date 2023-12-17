@@ -312,11 +312,16 @@ def main():
         
         # Reorder columns to match top_feature_list order
         encoded_data = encoded_data[top_feature_list]
+
+	text_input = df_x.loc[0, 'Emotions']
+	emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
+	emotion_result = emotion(text_input)
         
         prediction = model.predict(encoded_data)
         
         st.dataframe(encoded_data)
         st.write(prediction)
+	st.write(emotion_result)
         
 
 if __name__ == "__main__":
