@@ -331,16 +331,16 @@ def main():
             wedge = patches.Wedge((0, 0), 1, start, start + proportion * 360, facecolor=color, edgecolor='black')
             ax.add_patch(wedge)
             start += proportion * 360
-    
+        
             # Menambahkan label untuk setiap tingkat darurat
             label_position = start - proportion * 360 / 2
-            x_label = 0.7 * plt.cos(label_position * np.pi / 180)
-            y_label = 0.7 * plt.sin(label_position * np.pi / 180)
+            x_label = 0.7 * np.cos(label_position * np.pi / 180)
+            y_label = 0.7 * np.sin(label_position * np.pi / 180)
             ax.text(x_label, y_label, level, ha='center', va='center', fontsize=10, color='black')
-    
+        
         # Menghilangkan sumbu untuk tampilan yang lebih baik
         ax.axis('off')
-    
+        
         # Menampilkan grafik pada Streamlit
         st.pyplot(fig)
 
