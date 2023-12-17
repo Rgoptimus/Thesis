@@ -319,7 +319,7 @@ def main():
 
         st.dataframe(encoded_data)
         st.write(prediction)
-	st.write(emotion(df_x['Emotions'))
+	st.write(emotion(df_x['Emotions']))
         
 
 if __name__ == "__main__":
