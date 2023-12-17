@@ -301,7 +301,7 @@ def main():
 
         prediction = model.predict(encoded_data)
 
-        prediction= prediction.map({
+        prediction[0]= prediction[0].map({
             'No': 'Tidak memiliki permasalahan kesehatan mental',
             'Yes': 'Memiliki permasalahan kesehatan mental'})
 
