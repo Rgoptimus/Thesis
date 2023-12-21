@@ -339,9 +339,12 @@ def main():
 
         prediction = model.predict(encoded_data)
 
-        st.dataframe(encoded_data)
-        st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
-        st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
+        # st.dataframe(encoded_data)
+        # st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
+        # st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
+
+        if prediction[0] == "No" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']:
+        st.warning("Warning")
 
     st.caption("""Apps ini dibangun bertujuan untuk menyelesaikan tesis peneliti""")
     st.caption("""Created by: Irvan Zidny (225221004).""")
