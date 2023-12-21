@@ -181,12 +181,24 @@ def main():
         st.markdown(f"**Jenis kelamin**: {Gender}")
         st.markdown(f"**Memiliki pengalaman masa lalu terhadap kesehatan mental**: {Past_disorder}")
         st.markdown(f"**Memiliki latar belakang keluarga yang memiliki gangguan kesehatan mental**: {Family_history}")
-        st.markdown(f"**Mencari penanganan kesehatan mental**: {Mental_health_treatment}")
+        st.markdown(f"**Pernah mencari penanganan kesehatan mental**: {Mental_health_treatment}")
         st.markdown(f"**Nilai akan pentingnya kesehatan mental**: {Employer_mental_health_importance2}")
         st.markdown(f"**Nilai akan pentingnya dukungan teknologi industri**: {Tech_industry_support}")
         st.markdown(f"**Nilai akan pentingnya kesehatan fisik**: {Employer_physical_health_importance1}")
+        st.markdown(f"**Perusahaan saat ini menyediakan manfaat kesehatan**: {Health_benefits}")
+        st.markdown(f"**Perusahaan sebelumnya menyediakan manfaat kesehatan**: {Previous_benefits}")
+        st.markdown(f"**Mengetahui opsi perawatan kesehatan mental**: {Mental_health_options}")
+        st.markdown(f"**Bersedia membagikan cerita tentang kesehatan mental**: {Share_mental_illness}")
+        st.markdown(f"**Pernah membagikan cerita tentang kesehatan mental ke atasan**: {Employer_mental_health_discsusion}")
+        st.markdown(f"**Merasa nyaman ketika bercerita dengan atasan**: {Supervisor_comfort}")
+        st.markdown(f"**Pernah membagikan cerita tentang kesehatan mental ke rekan kerja**: {Coworker_mental_health_discussion2}")
+        st.markdown(f"**Merasa nyaman ketika bercerita dengan rekan kerja**: {Coworker_mental_health_discussion1}")
+        st.markdown(f"**Jumlah karyawan di perusahaan**: {Employees_count}")
+        st.markdown(f"**Mudah mendapatkan izin sakit**: {Medical_leave_ease}")
+        st.markdown(f"**Bersedia berdiskusi mengenai permasalahan kesehatan mental dengan pemberi kerja**: {Health_disclosure}")
+        st.markdown(f"**Emosi yang dirasakan: {Emotions}")
         
-    
+        
     st.markdown("""---""")
     
     # Menambah tombol "Predict"
