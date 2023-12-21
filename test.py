@@ -46,12 +46,15 @@ def encode_columns(df, columns_to_encode):
 # Streamlit app
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
-    st.markdown("""Apps ini hanyalah sebuah model prediksi dan tidak boleh dianggap sebagai pengganti nasihat profesional. 
+    st.markdown("""<div style="text-align: justify;">
+                    Apps ini hanyalah sebuah model prediksi dan tidak boleh dianggap sebagai pengganti nasihat profesional. 
                     Informasi yang disajikan oleh model ini mungkin tidak akurat atau sesuai dengan keadaan individual. 
                     Apabila Anda mengalami potensi permasalahan kesehatan mental atau memiliki kekhawatiran terkait kesejahteraan psikologis, 
                     segera konsultasikan dengan tenaga kesehatan mental atau profesional terkait. 
                     Model ini tidak bertanggung jawab atas tindakan yang diambil berdasarkan informasi yang diberikan, 
-                    dan penggunaan teks ini sepenuhnya menjadi tanggung jawab pribadi.""")
+                    dan penggunaan teks ini sepenuhnya menjadi tanggung jawab pribadi.
+                    </div>
+                    """, unsafe_allow_html=True)
     st.markdown("""---""")
     
     st.subheader("Identitas")
