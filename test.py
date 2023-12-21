@@ -196,7 +196,7 @@ def main():
         st.markdown(f"**Jumlah karyawan di perusahaan**: {Employees_count}")
         st.markdown(f"**Mudah mendapatkan izin sakit**: {Medical_leave_ease}")
         st.markdown(f"**Bersedia berdiskusi mengenai permasalahan kesehatan mental dengan pemberi kerja**: {Health_disclosure}")
-        st.markdown(f"**Emosi yang dirasakan: {Emotions}")
+        st.markdown(f"**Perasaan hari ini**: {Emotions}")
         
         
     st.markdown("""---""")
