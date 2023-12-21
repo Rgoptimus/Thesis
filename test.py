@@ -176,7 +176,7 @@ def main():
     
     # Menambah keadaan apabila tombol ditekan
     if submit_button:
-        st.markdown("""Rangkuman Data Karyawan""")
+        st.subheader("""Rangkuman Data Karyawan""")
         st.markdown(f"Umur: {Age}")
     
     st.markdown("""---""")
