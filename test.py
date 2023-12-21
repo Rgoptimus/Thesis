@@ -343,8 +343,13 @@ def main():
         # st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
         # st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
 
-        if prediction[0] == "No" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']:
-            st.warning("Warning")
+        if (prediction[0] == "No" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']) or \
+           (prediction[0] == "Yes" and emotion_result[0]['label'] == 'happy'):
+               st.warning("Warning")
+        elif prediction[0] == "Yes" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']:
+            st.error("Urgent")
+        elif prediction[0] == "No" and emotion_result[0]['label'] == 'happy':
+            st.success("Safe")
 
     st.caption("""Apps ini dibangun bertujuan untuk menyelesaikan tesis peneliti""")
     st.caption("""Created by: Irvan Zidny (225221004).""")
