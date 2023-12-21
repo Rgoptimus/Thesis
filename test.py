@@ -343,13 +343,22 @@ def main():
         # st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
         # st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
 
+        # Fungsi untuk menentukan format CSS berdasarkan kondisi
+        def get_css_style(color, font_size):
+            return f"color: {color}; font-size: {font_size}px; text-align: center;"
+        
+        # Fungsi untuk menampilkan teks dengan format Markdown dan CSS
+        def display_text(message, color, font_size):
+            st.markdown(f'<p style="{get_css_style(color, font_size)}">{message}</p>', unsafe_allow_html=True)
+        
+        # Check kondisi untuk menentukan tampilan kotak dan tulisan
         if (prediction[0] == "No" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']) or \
            (prediction[0] == "Yes" and emotion_result[0]['label'] == 'happy'):
-               st.markdown(get_html_content("Warning", "orange", 24), unsafe_allow_html=True)
+            display_text("Warning", "orange", 24)
         elif prediction[0] == "Yes" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']:
-            st.markdown(get_html_content("Urgent", "red", 24), unsafe_allow_html=True)
+            display_text("Urgent", "red", 24)
         elif prediction[0] == "No" and emotion_result[0]['label'] == 'happy':
-            st.markdown(get_html_content("Safe", "green", 24), unsafe_allow_html=True)
+            display_text("Safe", "green", 24)
 
     st.caption("""Apps ini dibangun bertujuan untuk menyelesaikan tesis peneliti""")
     st.caption("""Created by: Irvan Zidny (225221004).""")
