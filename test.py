@@ -339,12 +339,6 @@ def main():
 
         prediction = model.predict(encoded_data)
 
-        replace_mapping = {'No': 'Tidak memiliki permasalahan kesehatan mental',
-                   'Yes': 'Memiliki permasalahan kesehatan mental'}
-
-        # Replace values in the NumPy array
-        prediction = np.array([replace_mapping.get(value, value) for value in prediction])
-
         st.dataframe(encoded_data)
         st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
         st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
