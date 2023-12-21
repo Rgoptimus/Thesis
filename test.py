@@ -189,7 +189,7 @@ def main():
         st.markdown(f"**Perusahaan sebelumnya menyediakan manfaat kesehatan**: {Previous_benefits}")
         st.markdown(f"**Mengetahui opsi perawatan kesehatan mental**: {Mental_health_options}")
         st.markdown(f"**Bersedia membagikan cerita tentang kesehatan mental**: {Share_mental_illness}")
-        st.markdown(f"**Pernah membagikan cerita tentang kesehatan mental ke atasan**: {Employer_mental_health_discsusion}")
+        st.markdown(f"**Pernah membagikan cerita tentang kesehatan mental ke atasan**: {Employer_mental_health_discsussion}")
         st.markdown(f"**Merasa nyaman ketika bercerita dengan atasan**: {Supervisor_comfort}")
         st.markdown(f"**Pernah membagikan cerita tentang kesehatan mental ke rekan kerja**: {Coworker_mental_health_discussion2}")
         st.markdown(f"**Merasa nyaman ketika bercerita dengan rekan kerja**: {Coworker_mental_health_discussion1}")
