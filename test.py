@@ -360,8 +360,7 @@ def main():
         elif prediction[0] == "No" and emotion_result[0]['label'] == 'happy':
             display_text("Safe", "green", 24)
 
-    st.caption("""Apps ini dibangun bertujuan untuk menyelesaikan tesis peneliti
-                Created by: Irvan Zidny (225221004).""")
+    st.caption("Created by: Irvan Zidny (225221004).")
 
 if __name__ == "__main__":
     main()
