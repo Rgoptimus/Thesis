@@ -345,11 +345,11 @@ def main():
 
         if (prediction[0] == "No" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']) or \
            (prediction[0] == "Yes" and emotion_result[0]['label'] == 'happy'):
-               st.warning("Warning")
+               st.markdown(get_html_content("Warning", "orange", 24), unsafe_allow_html=True)
         elif prediction[0] == "Yes" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']:
-            st.error("Urgent")
+            st.markdown(get_html_content("Urgent", "red", 24), unsafe_allow_html=True)
         elif prediction[0] == "No" and emotion_result[0]['label'] == 'happy':
-            st.success("Safe")
+            st.markdown(get_html_content("Safe", "green", 24), unsafe_allow_html=True)
 
     st.caption("""Apps ini dibangun bertujuan untuk menyelesaikan tesis peneliti""")
     st.caption("""Created by: Irvan Zidny (225221004).""")
