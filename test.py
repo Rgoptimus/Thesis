@@ -54,7 +54,7 @@ def main():
                     dan penggunaan teks ini sepenuhnya menjadi tanggung jawab pribadi.""")
     st.markdown("""---""")
     
-    st.subheader("Usia dan Identitas")
+    st.subheader("Identitas")
 
     # Pertanyaan Usia
     Age = st.slider("Berapa usia Anda?", min_value=11, max_value=68, value=25)
@@ -65,7 +65,7 @@ def main():
 
     st.markdown("""---""")
 
-    st.subheader("Permasalahan Kesehatan Mental Sebelumnya")
+    st.subheader("Riwayat Kesehatan Mental")
     # Pertanyaan Masalah Kesehatan Sebelumnya
     Past_disorder_options = ["Iya","Tidak","Tidak tahu"]
     Past_disorder = st.selectbox("Pernahkah Anda mengalami gangguan kesehatan mental sebelumnya?", Past_disorder_options)
