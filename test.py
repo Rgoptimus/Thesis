@@ -177,11 +177,15 @@ def main():
     # Menambah keadaan apabila tombol ditekan
     if submit_button:
         st.subheader("""Rangkuman Data Karyawan""")
-        st.markdown(f"*Umur*: {Age}")
-        st.markdown(f"Jenis kelamin: {Gender}")
-        st.markdown(f"Memiliki pengalaman masa lalu terhadap kesehatan mental: {Past_disorder}")
-        st.markdown(f"Memiliki latar belakang keluarga yang memiliki gangguan kesehatan mental: {Family_history}")
-        st.markdown(f"Mencari penanganan kesehatan mental: {Mental_health_treatment}")
+        st.markdown(f"**Umur**: {Age}")
+        st.markdown(f"**Jenis kelamin**: {Gender}")
+        st.markdown(f"**Memiliki pengalaman masa lalu terhadap kesehatan mental**: {Past_disorder}")
+        st.markdown(f"**Memiliki latar belakang keluarga yang memiliki gangguan kesehatan mental**: {Family_history}")
+        st.markdown(f"**Mencari penanganan kesehatan mental**: {Mental_health_treatment}")
+        st.markdown(f"**Nilai akan pentingnya kesehatan mental**: {Employer_mental_health_importance2}")
+        st.markdown(f"**Nilai akan pentingnya dukungan teknologi industri**: {Tech_industry_support}")
+        st.markdown(f"**Nilai akan pentingnya kesehatan fisik**: {Employer_physical_health_importance1}")
+        
     
     st.markdown("""---""")
     
