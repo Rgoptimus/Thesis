@@ -328,5 +328,8 @@ def main():
         st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
         st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
 
+    st.markdown("""Apps ini dibangun bertujuan untuk menyelesaikan tesis peneliti""")
+    st.markdown("""Created by: Irvan Zidny (225221004)""")
+
 if __name__ == "__main__":
     main()
