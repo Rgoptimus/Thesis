@@ -178,6 +178,10 @@ def main():
     if submit_button:
         st.subheader("""Rangkuman Data Karyawan""")
         st.markdown(f"Umur: {Age}")
+        st.markdown(f"Jenis kelamin: {Gender}")
+        st.markdown(f"Pengalaman Masa lalu: {Past_disorder}")
+        st.markdown(f"Latar Belakang Keluarga: {Family_history}")
+        st.markdown(f"Tindakan Penanganan Mental Health: {Mental_health_treatment}")
     
     st.markdown("""---""")
     
