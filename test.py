@@ -179,9 +179,9 @@ def main():
         st.subheader("""Rangkuman Data Karyawan""")
         st.markdown(f"Umur: {Age}")
         st.markdown(f"Jenis kelamin: {Gender}")
-        st.markdown(f"Pengalaman Masa lalu: {Past_disorder}")
-        st.markdown(f"Latar Belakang Keluarga: {Family_history}")
-        st.markdown(f"Tindakan Penanganan Mental Health: {Mental_health_treatment}")
+        st.markdown(f"Memiliki pengalaman masa lalu terhadap kesehatan mental: {Past_disorder}")
+        st.markdown(f"Memiliki latar belakang keluarga yang memiliki gangguan kesehatan mental: {Family_history}")
+        st.markdown(f"Mencari penanganan kesehatan mental: {Mental_health_treatment}")
     
     st.markdown("""---""")
     
