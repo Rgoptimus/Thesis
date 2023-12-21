@@ -176,7 +176,7 @@ def main():
     
     # Menambah keadaan apabila tombol ditekan
     if submit_button:
-        st.dataframe(df_x)
+        st.markdown(f"Umur: {Age}")
     
     st.markdown("""---""")
     
