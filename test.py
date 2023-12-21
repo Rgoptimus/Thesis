@@ -80,17 +80,11 @@ def main():
 
     st.subheader("Pentingnya Kesehatan Mental di Tempat Kerja")
     # Pertanyaan Pentingnya Kesehatan Mental di Tempat Kerja
-    emp_mh_imp2_opt = {0: "Sangat tidak penting", 1: "Tidak penting", 2: "Cukup penting", 3: "Penting", 4: "Sangat penting"}
-
-    Employer_mental_health_importance2 = st.slider(
-    "Seberapa penting menurut Anda perusahaan Anda menghargai kesehatan mental?",
-    min_value=0,
-    max_value=4,
-    value=0,
-    format_func=lambda x: emp_mh_imp2_opt.get(x))
-    
-    #Employer_mental_health_importance2 = st.slider("Seberapa penting menurut Anda perusahaan Anda menghargai kesehatan mental?", min_value=0, max_value=10, value=1, format_func=lambda x: emp_mh_imp2_opt.get(x))
+    st.markdown("""Rentang nilai: 0 (Tidak Penting Sama Sekali) - 10 (Sangat Penting)""")
+    Employer_mental_health_importance2 = st.slider("Seberapa penting menurut Anda perusahaan Anda menghargai kesehatan mental?", min_value=0, max_value=10, value=1, format_func=lambda x: emp_mh_imp2_opt.get(x))
+    st.markdown("""Rentang nilai: 1 (Sangat Tidak Didukung) - 5 (Sangat Didukung)""")
     Tech_industry_support = st.slider("Bagaimana menurut Anda dukungan yang diberikan perusahaan Anda kepada karyawan yang memiliki permasalahan kesehatan mental?", min_value=0, max_value=5, value=1)
+    st.markdown("""Rentang nilai: 0 (Tidak Penting Sama Sekali) - 10 (Sangat Penting)""")
     Employer_physical_health_importance1 = st.slider("Seberapa penting menurut Anda perusahaan Anda dalam menghargai kesehatan fisik?", min_value=0, max_value=10, value=1)
 
     st.markdown("""---""")
