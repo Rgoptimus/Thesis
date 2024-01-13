@@ -344,25 +344,25 @@ def main():
         prediction = model.predict(encoded_data)
 
         # st.dataframe(encoded_data)
-        # st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
-        # st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
+        st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
+        st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
 
-        # Fungsi untuk menentukan format CSS berdasarkan kondisi
-        def get_css_style(color, font_size):
-            return f"color: {color}; font-size: {font_size}px; text-align: center;"
+        # # Fungsi untuk menentukan format CSS berdasarkan kondisi
+        # def get_css_style(color, font_size):
+        #     return f"color: {color}; font-size: {font_size}px; text-align: center;"
         
-        # Fungsi untuk menampilkan teks dengan format Markdown dan CSS
-        def display_text(message, color, font_size):
-            st.markdown(f'<p style="{get_css_style(color, font_size)}">{message}</p>', unsafe_allow_html=True)
+        # # Fungsi untuk menampilkan teks dengan format Markdown dan CSS
+        # def display_text(message, color, font_size):
+        #     st.markdown(f'<p style="{get_css_style(color, font_size)}">{message}</p>', unsafe_allow_html=True)
         
-        # Check kondisi untuk menentukan tampilan kotak dan tulisan
-        if (prediction[0] == "No" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']) or \
-           (prediction[0] == "Yes" and emotion_result[0]['label'] == 'happy'):
-            display_text("Warning", "orange", 24)
-        elif prediction[0] == "Yes" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']:
-            display_text("Urgent", "red", 24)
-        elif prediction[0] == "No" and emotion_result[0]['label'] == 'happy':
-            display_text("Safe", "green", 24)
+        # # Check kondisi untuk menentukan tampilan kotak dan tulisan
+        # if (prediction[0] == "No" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']) or \
+        #    (prediction[0] == "Yes" and emotion_result[0]['label'] == 'happy'):
+        #     display_text("Warning", "orange", 24)
+        # elif prediction[0] == "Yes" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']:
+        #     display_text("Urgent", "red", 24)
+        # elif prediction[0] == "No" and emotion_result[0]['label'] == 'happy':
+        #     display_text("Safe", "green", 24)
 
     st.caption("Created by: Irvan Zidny (225221004).")
 
