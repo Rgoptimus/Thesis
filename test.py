@@ -173,13 +173,6 @@ def main():
 
     # Menambah tombol "Submit"
     submit_button = st.button("Submit")
-
-    if Emotions != "":
-        st.markdown(f"Perasaan hari ini: {Emotions}")
-    else:
-        st.warning("Semua pertanyaan harus terisi. Mohon isi pertanyaan tentang perasaan hari ini.")
-    # Stop execution if Emotions is null
-        st.stop()
     
     # Menambah keadaan apabila tombol ditekan
     if submit_button:
@@ -203,6 +196,12 @@ def main():
         st.markdown(f"Jumlah karyawan di perusahaan: {Employees_count}")
         st.markdown(f"Mudah mendapatkan izin sakit: {Medical_leave_ease}")
         st.markdown(f"Bersedia berdiskusi mengenai permasalahan kesehatan mental dengan pemberi kerja: {Health_disclosure}")
+        if Emotions != "":
+            st.markdown(f"Perasaan hari ini: {Emotions}")
+        else:
+            st.warning("Semua pertanyaan harus terisi. Mohon isi pertanyaan tentang perasaan hari ini.")
+        # Stop execution if Emotions is null
+            st.stop()
            
     st.markdown("""---""")
     
