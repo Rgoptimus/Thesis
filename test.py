@@ -174,7 +174,7 @@ def main():
     # Menambah tombol "Submit"
     submit_button = st.button("Submit")
 
-    if Emotions is not None:
+    if Emotions != "":
         st.markdown(f"Perasaan hari ini: {Emotions}")
     else:
         st.warning("Semua pertanyaan harus terisi. Mohon isi pertanyaan tentang perasaan hari ini.")
