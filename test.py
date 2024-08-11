@@ -81,7 +81,7 @@ def main():
     # Membuat fungsi if apabila tombol predict ditekan
     if predict_button:
         emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
-        emotion_result = emotion(text_input)
+        emotion_result = emotion(Emotions)
         
         st.write("Hasil Emosi yang dimiliki: ", emotion_result)
 
