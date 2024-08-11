@@ -1,8 +1,8 @@
-pip install streamlit==1.20.0
-pip install pickle5==0.0.12  # If needed
-pip install pandas==2.0.0
-pip install numpy==1.25.0
-pip install scikit-learn==1.2.0
-pip install requests==2.31.0
-pip install transformers==4.30.0
-pip install matplotlib==3.8.0
+streamlit==1.20.0
+pickle5==0.0.12
+pandas==2.0.0
+numpy==1.25.0
+scikit-learn==1.2.0
+requests==2.31.0
+transformers==4.30.0
+matplotlib==3.8.0
