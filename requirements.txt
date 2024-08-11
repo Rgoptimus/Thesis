@@ -1,5 +1,4 @@
-streamlit==1.20.0
-pickle5==0.0.12
+streamlit==1.37.1
 pandas==2.0.0
 numpy==1.25.0
 scikit-learn==1.2.0
