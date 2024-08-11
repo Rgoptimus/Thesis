@@ -4,14 +4,13 @@ import pickle
 import pandas as pd
 import os
 import numpy as np
-import subprocess
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import OrdinalEncoder
 import requests
 from transformers import pipeline
+import tensorflow as tf
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-
 
 # Function to load the model from a pickle file
 def load_model(file_path):
@@ -159,212 +158,64 @@ def main():
            Employees_count,
            Medical_leave_ease,
            Health_disclosure,
-           Emotions
-          ]]
-
-    df_x = pd.DataFrame(data, columns=['Age','Gender','Past_disorder',
-                                 'Family_history','Mental_health_treatment',
-                                'Employer_mental_health_importance2','Tech_industry_support',
-                                'Employer_physical_health_importance1','Health_benefits','Previous_benefits',
-                                'Mental_health_options','Share_mental_illness','Supervisor_comfort',
-                                'Coworker_mental_health_discussion1','Coworker_mental_health_discussion2',
-                                'Employer_mental_health_discussion','Employees_count','Medical_leave_ease',
-                                'Health_disclosure','Emotions'])
-
-    # Menambah tombol "Submit"
-    submit_button = st.button("Submit")
+           Emotions]]
     
-    # Menambah keadaan apabila tombol ditekan
-    if submit_button:
-        st.subheader("""Rangkuman Data Karyawan""")
-        st.markdown(f"Umur: {Age}")
-        st.markdown(f"Jenis kelamin: {Gender}")
-        st.markdown(f"Memiliki pengalaman masa lalu terhadap kesehatan mental: {Past_disorder}")
-        st.markdown(f"Memiliki latar belakang keluarga yang memiliki gangguan kesehatan mental: {Family_history}")
-        st.markdown(f"Pernah mencari penanganan kesehatan mental: {Mental_health_treatment}")
-        st.markdown(f"Nilai akan pentingnya kesehatan mental: {Employer_mental_health_importance2}")
-        st.markdown(f"Nilai akan pentingnya dukungan teknologi industri: {Tech_industry_support}")
-        st.markdown(f"Nilai akan pentingnya kesehatan fisik: {Employer_physical_health_importance1}")
-        st.markdown(f"Perusahaan saat ini menyediakan manfaat kesehatan: {Health_benefits}")
-        st.markdown(f"Perusahaan sebelumnya menyediakan manfaat kesehatan: {Previous_benefits}")
-        st.markdown(f"Mengetahui opsi perawatan kesehatan mental: {Mental_health_options}")
-        st.markdown(f"Bersedia membagikan cerita tentang kesehatan mental: {Share_mental_illness}")
-        st.markdown(f"Pernah membagikan cerita tentang kesehatan mental ke atasan: {Employer_mental_health_discussion}")
-        st.markdown(f"Merasa nyaman ketika bercerita dengan atasan: {Supervisor_comfort}")
-        st.markdown(f"Pernah membagikan cerita tentang kesehatan mental ke rekan kerja: {Coworker_mental_health_discussion2}")
-        st.markdown(f"Merasa nyaman ketika bercerita dengan rekan kerja: {Coworker_mental_health_discussion1}")
-        st.markdown(f"Jumlah karyawan di perusahaan: {Employees_count}")
-        st.markdown(f"Mudah mendapatkan izin sakit: {Medical_leave_ease}")
-        st.markdown(f"Bersedia berdiskusi mengenai permasalahan kesehatan mental dengan pemberi kerja: {Health_disclosure}")
-        if Emotions != "":
-            st.markdown(f"Perasaan hari ini: {Emotions}")
-        else:
-            st.warning("Semua pertanyaan harus terisi. Mohon isi pertanyaan tentang perasaan hari ini.")
-        # Stop execution if Emotions is null
-            st.stop()
-           
-    st.markdown("""---""")
+    df = pd.DataFrame(data, columns=['Age',
+                                     'Gender',
+                                     'Past_disorder',
+                                     'Family_history',
+                                     'Mental_health_treatment',
+                                     'Employer_mental_health_importance2',
+                                     'Tech_industry_support',
+                                     'Employer_physical_health_importance1',
+                                     'Health_benefits',
+                                     'Previous_benefits',
+                                     'Mental_health_options',
+                                     'Share_mental_illness',
+                                     'Supervisor_comfort',
+                                     'Coworker_mental_health_discussion1',
+                                     'Coworker_mental_health_discussion2',
+                                     'Employer_mental_health_discussion',
+                                     'Employees_count',
+                                     'Medical_leave_ease',
+                                     'Health_disclosure',
+                                     'Emotions'])
     
-    # Menambah tombol "Predict"
-    predict_button = st.button("Predict")
+    # Encode categorical features
+    categorical_columns = ['Gender', 'Past_disorder', 'Family_history', 'Mental_health_treatment',
+                           'Health_benefits', 'Previous_benefits', 'Mental_health_options',
+                           'Share_mental_illness', 'Supervisor_comfort', 'Coworker_mental_health_discussion1',
+                           'Coworker_mental_health_discussion2', 'Employer_mental_health_discussion',
+                           'Employees_count', 'Medical_leave_ease', 'Health_disclosure']
+    df = encode_columns(df, categorical_columns)
+    
+    # Make prediction
+    prediction = model.predict(df)
+    prediction_proba = model.predict_proba(df)
+    
+    st.write("Hasil Prediksi:")
+    st.write("Kelas:", prediction[0])
+    st.write("Probabilitas:", prediction_proba[0])
 
-    # Membuat fungsi if apabila tombol predict ditekan
-    if predict_button:
-        df_x['Gender'] = df_x['Gender'].replace({
-                            'Laki-laki':'Male',
-                            'Perempuan' : 'Female'})
-
-        df_x['Past_disorder'] = df_x['Past_disorder'].replace({
-                                'Iya': 'Yes',
-                                'Tidak': 'No',
-                                'Tidak tahu': "I don't know"})
-
-        df_x['Family_history'] = df_x['Family_history'].replace({
-                                'Iya': 'Yes',
-                                'Tidak': 'No',
-                                'Tidak tahu': "I don't know"})
-
-        df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].replace({
-                                        'Iya': 1,
-                                        'Tidak': 0})
-
-        df_x['Health_benefits'] = df_x['Health_benefits'].replace({
-                                    'Iya': 'Yes',
-                                    'Tidak': 'No',
-                                    'Tidak tahu': "I don't know"})
-
-        df_x['Previous_benefits'] = df_x['Previous_benefits'].replace({
-                                    'Iya': 'Yes',
-                                    'Tidak': 'No',
-                                    'Tidak tahu': "I don't know"})
-
-        df_x['Mental_health_options'] = df_x['Mental_health_options'].replace({
-                                        'Iya': 'Yes',
-                                        'Tidak': 'No',
-                                        'Tidak tahu': "I don't know"})
-
-        df_x['Share_mental_illness'] = df_x['Share_mental_illness'].replace({
-                                        'Tidak berlaku untuk saya' : 'Not applicable to me (I do not have a mental illness)',
-                                        'Tidak terbuka sama sekali' : 'Not open at all',
-                                        'Netral' : 'Neutral',
-                                        'Agak tidak terbuka' : 'Somewhat not open',
-                                        'Agak terbuka' : 'Somewhat open',
-                                        'Sangat terbuka' : 'Very open'})
-
-        df_x['Supervisor_comfort'] = df_x['Supervisor_comfort'].replace({
-                                    'Iya': 'Yes',
-                                    'Tidak': 'No',
-                                    'Mungkin': 'Maybe'})
-
-        df_x['Coworker_mental_health_discussion1'] = df_x['Coworker_mental_health_discussion1'].replace({
-                                                    'Iya': 'Yes',
-                                                    'Tidak': 'No',
-                                                    'Mungkin': 'Maybe'})
-
-        df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].replace({
-                                                    'Iya': 1,
-                                                    'Tidak': 0})
-
-        df_x['Employer_mental_health_discussion'] = df_x['Employer_mental_health_discussion'].replace({
-                                                    'Iya': 1,
-                                                    'Tidak': 0})
-
-        df_x['Medical_leave_ease'] = df_x['Medical_leave_ease'].replace({
-            'Sulit' : 'Difficult',
-            'Saya tidak tahu' : "I don't know",
-            'Agak sulit': 'Somewhat difficult',
-            'Agak mudah': 'Somewhat easy',
-            'Sangat mudah' : 'Very easy'
-        })
-
-        df_x['Health_disclosure'] = df_x['Health_disclosure'].replace({
-            'Iya': 'Yes',
-            'Tidak': 'No',
-            'Mungkin': 'Maybe'
-        })
-
-        df_x['Employees_count'] = df_x['Employees_count'].replace({
-            '1-100': 0,
-            '100-1000': 1,
-            'Lebih dari 1000': 2
-        })
-
-        df_x['Age'] = df_x['Age'].astype('int')
-        df_x['Age'] = df_x['Age'].apply(categorize_age)
-
-        df_x['Employer_physical_health_importance1'] = df_x['Employer_physical_health_importance1'].astype('float')
-        df_x['Employer_mental_health_importance2'] = df_x['Employer_mental_health_importance2'].astype('float')
-        df_x['Tech_industry_support'] = df_x['Tech_industry_support'].astype('float')
-        df_x['Employer_mental_health_discussion'] = df_x['Employer_mental_health_discussion'].astype('float')
-        df_x['Mental_health_treatment'] = df_x['Mental_health_treatment'].astype('int')
-        df_x['Coworker_mental_health_discussion2'] = df_x['Coworker_mental_health_discussion2'].astype('float')
-
-        df_x['Age'] = df_x['Age'].replace({
-            '11-26' : 0,
-            '27-42' : 1,
-            '43-58' : 2,
-            '59-68' : 3
-        })
-
-        list_columns = ['Gender', 'Past_disorder', 'Family_history',
-                        'Health_benefits', 'Previous_benefits',
-                        'Mental_health_options', 'Share_mental_illness', 'Supervisor_comfort',
-                        'Coworker_mental_health_discussion1',
-                        'Medical_leave_ease', 'Health_disclosure', 'Emotions']
-
-        encoded_data = pd.get_dummies(df_x, columns=list_columns)
-        encoded_data.replace(True, 1, inplace=True)
-
-        # List of top features
-        top_feature_list = ['Past_disorder_No',
-                            'Past_disorder_Yes',
-                            'Family_history_No',
-                            'Mental_health_treatment',
-                            'Family_history_Yes',
-                            'Share_mental_illness_Not applicable to me (I do not have a mental illness)',
-                            "Past_disorder_I don't know",
-                            'Employees_count',
-                            'Tech_industry_support',
-                            'Age',
-                            'Share_mental_illness_Very open',
-                            'Gender_Male']
-
-        # Set all other dummy columns to 0
-        for column in top_feature_list:
-            if column not in encoded_data.columns:
-                encoded_data[column] = 0
-
-        # Reorder columns to match top_feature_list order
-        encoded_data = encoded_data[top_feature_list]
-
-        text_input = df_x.loc[0, 'Emotions']
-        emotion = pipeline('text-classification', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
-        emotion_result = emotion(text_input)
-
-        prediction = model.predict(encoded_data)
-
-        # st.dataframe(encoded_data)
-        st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
-        st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
-
-        # # Fungsi untuk menentukan format CSS berdasarkan kondisi
-        # def get_css_style(color, font_size):
-        #     return f"color: {color}; font-size: {font_size}px; text-align: center;"
+    # Plot the result
+    if st.checkbox("Tampilkan Plot"):
+        fig, ax = plt.subplots()
+        classes = model.classes_
+        bars = ax.bar(classes, prediction_proba[0])
+        ax.set_xlabel('Kelas')
+        ax.set_ylabel('Probabilitas')
+        ax.set_title('Probabilitas Prediksi per Kelas')
         
-        # # Fungsi untuk menampilkan teks dengan format Markdown dan CSS
-        # def display_text(message, color, font_size):
-        #     st.markdown(f'<p style="{get_css_style(color, font_size)}">{message}</p>', unsafe_allow_html=True)
+        # Add data labels
+        for bar in bars:
+            height = bar.get_height()
+            ax.annotate(f'{height:.2f}', 
+                        xy=(bar.get_x() + bar.get_width() / 2, height),
+                        xytext=(0, 3),  # 3 points vertical offset
+                        textcoords="offset points",
+                        ha='center', va='bottom')
         
-        # # Check kondisi untuk menentukan tampilan kotak dan tulisan
-        # if (prediction[0] == "No" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']) or \
-        #    (prediction[0] == "Yes" and emotion_result[0]['label'] == 'happy'):
-        #     display_text("Warning", "orange", 24)
-        # elif prediction[0] == "Yes" and emotion_result[0]['label'] in ['sadness', 'fear', 'anger']:
-        #     display_text("Urgent", "red", 24)
-        # elif prediction[0] == "No" and emotion_result[0]['label'] == 'happy':
-        #     display_text("Safe", "green", 24)
-
-    st.caption("Created by: Irvan Zidny (225221004).")
+        st.pyplot(fig)
 
 if __name__ == "__main__":
     main()
