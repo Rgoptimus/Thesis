@@ -15,3 +15,4 @@ xgboost
 tf_keras
 git+https://github.com/streamlit/gsheets-connection
 st-gsheets-connection==0.0.4
+pandas
