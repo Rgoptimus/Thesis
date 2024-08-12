@@ -1,4 +1,6 @@
 streamlit
+st-gsheets-connection==0.0.4
+pandas==1.5.3
 scikit-learn
 category_encoders
 numpy
@@ -14,5 +16,3 @@ seaborn
 xgboost
 tf_keras
 git+https://github.com/streamlit/gsheets-connection
-st-gsheets-connection==0.0.4
-pandas==1.5.3
