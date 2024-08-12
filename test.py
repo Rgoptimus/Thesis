@@ -147,7 +147,7 @@ def main():
     Health_disclosure_options = ["Iya","Tidak","Mungkin"]
     Health_disclosure = st.selectbox("Apakah anda bersedia untuk membicarakan masalah kesehatan fisik dengan calon pemberi kerja dalam wawancara kerja?", Health_disclosure_options)
 
-    Emotions = st.text_input("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?")
+    Emotions = st.text_input("Bagaimana kabar anda hari ini?")
 
     # Membuat dataframe
     data = [[Nama, Age,
