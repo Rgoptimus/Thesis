@@ -18,7 +18,7 @@ import subprocess
 # Establishing a google sheet connection
 conn = st.experimental_connection("gsheets", type = GSheetsConnection)
 # Fetch existing vendors data
-existing_data = conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing", usecols=list(range(3)), ttl=100)
+existing_data = conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing", usecols=list(range(23)), ttl=100)
 
 
 # Function to load the model from a pickle file
@@ -364,6 +364,7 @@ def main():
         updated_data = pd.concat([existing_data, df_x], ignore_index=True)
 
         conn.update(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing",data=updated_data)
+        
         st.warning("Data telah direkam dalam database.")
 
     st.caption("Created by: Irvan Zidny (225221004).")
