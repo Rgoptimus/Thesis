@@ -339,7 +339,7 @@ def main():
 
         text_input = df_x.loc[0, 'Emotions']
         emotion = pipeline('sentiment-analysis', model='StevenLimcorn/indonesian-roberta-base-emotion-classifier')
-        emotion_result = emotion(Emotions)
+        emotion_result = emotion(df_x['Emotions'])
 
         prediction = model.predict(encoded_data)
 
