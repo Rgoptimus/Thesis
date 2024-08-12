@@ -18,7 +18,7 @@ import subprocess
 # Establishing a google sheet connection
 conn = st.experimental_connection("gsheets", type = GSheetsConnection)
 # Fetch existing vendors data
-existing_data = conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing", usecols=list(range(23)), ttl=100)
+existing_data = conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing", usecols=list(range(24)), ttl=100)
 
 
 # Function to load the model from a pickle file
