@@ -150,8 +150,8 @@ def main():
     Emotions = st.text_input("Apa yang membuat Anda merasa cemas atau stres akhir-akhir ini?")
 
     # Membuat dataframe
-    data = [[Age,
-          Gender,
+    data = [[Nama, Age,
+            Gender,
            Past_disorder,
            Family_history,
            Mental_health_treatment,
@@ -172,7 +172,7 @@ def main():
            Emotions
           ]]
 
-    df_x = pd.DataFrame(data, columns=['Age','Gender','Past_disorder',
+    df_x = pd.DataFrame(data, columns=['Nama','Age','Gender','Past_disorder',
                                  'Family_history','Mental_health_treatment',
                                 'Employer_mental_health_importance2','Tech_industry_support',
                                 'Employer_physical_health_importance1','Health_benefits','Previous_benefits',
@@ -187,6 +187,7 @@ def main():
     # Menambah keadaan apabila tombol ditekan
     if submit_button:
         st.subheader("""Rangkuman Data Karyawan""")
+        st.markdown(f"Nama: {Nama}")
         st.markdown(f"Umur: {Age}")
         st.markdown(f"Jenis kelamin: {Gender}")
         st.markdown(f"Memiliki pengalaman masa lalu terhadap kesehatan mental: {Past_disorder}")
@@ -361,6 +362,7 @@ def main():
         df_x['emotion_detection'] = emotion_result[0]['label']
 
         conn.update(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing",data=df_x)
+        st.write("Data telah direkam dalam database")
 
     st.caption("Created by: Irvan Zidny (225221004).")
 
