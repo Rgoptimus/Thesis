@@ -4,7 +4,7 @@ category_encoders
 numpy
 scipy
 statsmodels
-pandas
+pandas==2.1.4
 patsy
 unittest2
 importlib_resources ; python_version<"3.9"
