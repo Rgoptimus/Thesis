@@ -362,7 +362,7 @@ def main():
         df_x['emotion_detection'] = emotion_result[0]['label']
 
         conn.update(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing",data=df_x)
-        st.write("Data telah direkam dalam database")
+        st.write("Data telah direkam dalam database.")
 
     st.caption("Created by: Irvan Zidny (225221004).")
 
