@@ -4,7 +4,7 @@ category_encoders
 numpy
 scipy
 statsmodels
-pandas==2.1.4
+pandas<=2.0.0
 patsy
 unittest2
 importlib_resources ; python_version<"3.9"
@@ -15,4 +15,4 @@ seaborn
 xgboost
 tf_keras
 git+https://github.com/streamlit/gsheets-connection
-st-gsheets-connection
+st-gsheets-connection==0.0.4
