@@ -55,17 +55,19 @@ def encode_columns(df, columns_to_encode):
 def main():
     st.title("Prediksi Kesehatan Mental Karyawan")
     st.markdown("""<div style="text-align: justify;">
-                    Apps ini hanyalah sebuah model prediksi dan tidak boleh dianggap sebagai pengganti nasihat profesional. 
-                    Informasi yang disajikan oleh model ini mungkin tidak akurat atau sesuai dengan keadaan individual. 
-                    Apabila Anda mengalami potensi permasalahan kesehatan mental atau memiliki kekhawatiran terkait kesejahteraan psikologis, 
-                    segera konsultasikan dengan tenaga kesehatan mental atau profesional terkait. 
-                    Model ini tidak bertanggung jawab atas tindakan yang diambil berdasarkan informasi yang diberikan, 
-                    dan penggunaan teks ini sepenuhnya menjadi tanggung jawab pribadi.
+                    Apps ini hanyalah sebuah model prediksi dan tidak boleh dianggap sebagai pengganti nasihat profesional.
+                    Hasil yang diberikan oleh model ini mungkin saja tidak akurat atau tidak sesuai dengan keadaan individual.
+                    Apabila anda mengalami potensi permasalahan kesehatan mental atau memiliki kekhawatiran terkait  dengan kesejahteraan psikologis,
+                    segera konsultasikan dengan tenaga kesehatan mental atau profesional terkait.
+                    Apps ini akan merekam hasil data kuesioner yang diisi oleh pengguna dan akan terjamin kerahasiaannya"
                     </div>
                     """, unsafe_allow_html=True)
     st.markdown("""---""")
     
     st.subheader("Identitas")
+
+    # Pertanyaan Nama
+    Nama = st.text_input("Masukan nama/inisial anda?")
 
     # Pertanyaan Usia
     Age = st.slider("Berapa usia Anda?", min_value=11, max_value=68, value=25)
@@ -354,6 +356,9 @@ def main():
         # st.dataframe(encoded_data)
         st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
         st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
+
+        df_x['result'] = prediction[0]
+        df_x['emotion_detection'] = emotion_result[0]['label']
 
         conn.update(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing",data=df_x)
 
