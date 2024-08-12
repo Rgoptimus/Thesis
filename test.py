@@ -59,7 +59,7 @@ def main():
                     Hasil yang diberikan oleh model ini mungkin saja tidak akurat atau tidak sesuai dengan keadaan individual.
                     Apabila anda mengalami potensi permasalahan kesehatan mental atau memiliki kekhawatiran terkait  dengan kesejahteraan psikologis,
                     segera konsultasikan dengan tenaga kesehatan mental atau profesional terkait.<br><br>
-                    Apps ini akan merekam hasil data kuesioner yang diisi oleh pengguna dan akan terjamin kerahasiaannya
+                    <strong> Catatan: Apps ini akan merekam hasil data kuesioner yang diisi oleh pengguna dan akan terjamin kerahasiaannya
                     </div>
                     """, unsafe_allow_html=True)
     st.markdown("""---""")
