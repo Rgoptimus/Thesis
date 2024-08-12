@@ -12,7 +12,6 @@ from transformers import pipeline
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from streamlit_gsheets import GSheetsConnection
-import pandas as pd
 import subprocess
 
 
