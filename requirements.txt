@@ -1,3 +1,4 @@
+pip
 streamlit==1.22.0
 scikit-learn==1.2.2
 git+https://github.com/streamlit/gsheets-connection
