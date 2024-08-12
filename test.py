@@ -361,6 +361,8 @@ def main():
         df_x['result'] = prediction[0]
         df_x['emotion_detection'] = emotion_result[0]['label']
 
+        updated_data = pd.concat([existing_data, df_x], ignore_index=True)
+
         conn.update(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing",data=df_x)
         st.write("Data telah direkam dalam database.")
 
