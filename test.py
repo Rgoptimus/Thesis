@@ -355,7 +355,7 @@ def main():
         prediction = model.predict(encoded_data)
 
         # st.dataframe(encoded_data)
-        st.write("Hasil Prediksi kesehatan mental: ", prediction[0])
+        st.write("Hasil Prediksi kesehatan mental menunjukkan bahwa saudara memiliki probabilitas {prediction[0]} hasil tersebut didapatkan dari kuesioner yang sudah anda kerjakan")
         st.write("Hasil Emosi yang dimiliki: ", emotion_result[0]['label'])
 
         df_x['result'] = prediction[0]
