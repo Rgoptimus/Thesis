@@ -301,7 +301,7 @@ def main():
         })
 
         df_x['Age'] = df_x['Age'].astype('int')
-        df_x['Age'] = df_x['Age'].apply(categorize_age)
+        df_x['Category_age'] = df_x['Age'].apply(categorize_age)
 
         df_x['Employer_physical_health_importance1'] = df_x['Employer_physical_health_importance1'].astype('float')
         df_x['Employer_mental_health_importance2'] = df_x['Employer_mental_health_importance2'].astype('float')
