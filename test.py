@@ -363,8 +363,8 @@ def main():
 
         updated_data = pd.concat([existing_data, df_x], ignore_index=True)
 
-        conn.update(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing",data=df_x)
-        st.write("Data telah direkam dalam database.")
+        conn.update(spreadsheet="https://docs.google.com/spreadsheets/d/1z7UPC-LoZDsNvsVbGv4cYsAM8D65wdIKci3xBXGMTqw/edit?usp=sharing",data=updated_data)
+        st.warning("Data telah direkam dalam database.")
 
     st.caption("Created by: Irvan Zidny (225221004).")
 
