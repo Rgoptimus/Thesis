@@ -2,7 +2,6 @@ pip==24.2
 streamlit==1.22.0
 scikit-learn==1.2.2
 git+https://github.com/streamlit/gsheets-connection
-st-gsheets-connection==0.0.4
 category_encoders==2.6.3
 numpy==1.26.4
 scipy>=1.0.0
